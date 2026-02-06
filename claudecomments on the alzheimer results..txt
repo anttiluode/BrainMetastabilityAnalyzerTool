@@ -1,0 +1,62 @@
+HOW TO RUN ETC: 
+
+Now I have everything. 19 channels: Fp1, Fp2, F7, F3, Fz, F4, F8, T3, C3, Cz, C4, T4, T5, P3, Pz, P4, T6, O1, O2. 500 Hz. BIDS format (.set files). MMSE scores in participants.tsv. Let me build this.Everything works. 19 electrodes give clean eigenmodes — Mode 1 is A-P (y-correlation -0.997), Mode 2 is L-R (x-correlation 0.996). All channel naming conventions map correctly, including the T7/T8/P7/P8 aliases.Download the dataset and run it:
+
+```bash
+# Option 1: OpenNeuro CLI
+npm install -g @openneuro/cli
+openneuro download --snapshot 1.0.8 ds004504 ds004504/
+
+# Option 2: Direct download (4.2 GB zip)
+# https://openneuro.org/datasets/ds004504/versions/1.0.8
+
+# Run the analyzer
+python phidwell_alzheimer.py "path/to/ds004504/"
+
+# Or use the preprocessed (artifact-cleaned) data:
+python phidwell_alzheimer.py "path/to/ds004504/" --use-derivatives
+```
+
+What the script does for all 88 subjects: reads the .set file, maps the 19 channels, builds the 6 eigenmode basis from the 10-20 electrode geometry, tokenizes 2 minutes of resting EEG into eigenmode words (5-tuples of dominant mode per band), computes vocabulary size, entropy, perplexity, self-transition rate, cross-band coupling, criticality (CV), Zipf exponent, and per-band self-transitions. Then runs Kruskal-Wallis tests across the three groups, pairwise Mann-Whitney tests with effect sizes, and Spearman correlations with MMSE scores. Outputs a 12-panel figure and a JSON with all per-subject metrics.
+
+The predictions, to be clear about what I expect and what would falsify them:
+
+**Vocabulary size should be CN > AD.** If vocabulary is the same across groups, the eigenmode approach adds nothing to Alzheimer's detection and this whole line of reasoning was wrong. If vocabulary is CN > AD with p < 0.05, that's the first demonstration that eigenmode configuration diversity decreases in neurodegeneration.
+
+**δ-θ coupling should be CN > AD.** AD damages long-range connectivity. δ-θ coupling reflects spatial coordination between slow rhythms across distant regions. If it's not reduced in AD, either the coupling measure is too noisy at 19 channels or the mechanism is wrong.
+
+**MMSE should correlate positively with vocabulary and entropy.** Lower MMSE (more severe disease) = smaller vocabulary. This would establish a dose-response relationship. If the correlation is near zero, the vocabulary measure isn't tracking disease severity.
+
+**FTD should look different from AD.** FTD attacks frontal cortex specifically. The A-P eigenmode (Mode 1) should be more disrupted in FTD than AD. If AD and FTD are indistinguishable, the eigenmode approach can't do differential diagnosis.
+
+What would be genuinely exciting: if the eigenmode vocabulary separates AD from FTD better than traditional power measures do. The existing literature gets ~70-80% classification accuracy between AD, FTD, and controls using spectral features. If vocabulary size alone reaches similar discriminability, that's a simpler, more interpretable biomarker.
+
+Run it tonight. The results will tell you whether this line of research has clinical legs or whether it's a beautiful instrument that measures something real but not clinically useful. Either answer is worth knowing. 
+
+Comments: 
+
+
+
+
+
+Let me look at this carefully, because the results are real but they say something I didn't predict.
+The direction is backwards.
+I predicted CN > AD for vocabulary. The data shows AD (1052) > CN (953). Alzheimer's brains have more eigenmode words, not fewer. FTD (1078) is even higher. Both are significantly different from controls (p=0.021 and p=0.036).
+This is not what I expected, but it's actually more interesting than what I expected. Let me think about what it means.
+What the data actually shows — the coherent picture:
+Five metrics reached significance (KW p < 0.05), and they all tell the same story from different angles:
+MetricCNADFTDDirectionVocabulary95310521078Disease ↑Entropy8.268.578.61Disease ↑Mean CV0.9830.9450.945Disease ↓Top-5 Concentration0.1540.1240.127Disease ↓Zipf α0.6810.6120.628Disease ↓
+Healthy brains have smaller vocabularies, higher concentration in their top words, steeper Zipf distributions, and CV closer to 1.0 (critical). Diseased brains spread their activity across more configurations but each configuration is visited less often, the frequency distribution flattens, and criticality drops.
+This is the loss of structured dynamics, not the loss of repertoire.
+The healthy resting brain is organized. It cycles through a constrained set of preferred eigenmode configurations — 953 words, with the top 5 accounting for 15.4% of all time. The frequency distribution is steep (Zipf α = 0.68). It has favorites. It has grooves. It concentrates its activity in a structured way. And its CV is 0.983 — right at criticality, poised between order and chaos.
+The Alzheimer's brain has lost that organization. It visits 1052 different configurations — 10% more than healthy — but none of them dominate. The top-5 concentration drops to 12.4%. The Zipf exponent flattens to 0.61. The dynamics become more uniform, more diffuse. The CV drops to 0.945 — away from criticality, toward a more random regime.
+This is not "the brain explores more." This is "the brain can no longer hold a pattern."
+Think of it like handwriting. A healthy person's handwriting has consistent letterforms — they use the same ~50 shapes repeatedly. A person with a tremor might produce 200 different shapes, because they can never quite land on the same form twice. More vocabulary, less structure.
+The criticality finding is the most theoretically grounded. CV = 0.983 for controls vs 0.945 for AD, p = 0.022. Healthy brains sit near the edge of criticality (CV ≈ 1.0). Alzheimer's pushes them away from criticality in the subcritical direction — more regular, less variable dwell times, but paradoxically visiting more configurations because the system can't maintain stable attractors. It keeps slipping from one configuration to another without settling.
+The MMSE correlations are suggestive but not individually significant. Perplexity, entropy, vocabulary, and concentration all correlate with MMSE at ρ ≈ 0.19, p ≈ 0.07. The two that do reach significance are criticality fraction (ρ = 0.229, p = 0.032) and Zipf α (ρ = 0.217, p = 0.043). Higher MMSE (healthier) = more critical, steeper Zipf. These are the structural-organization metrics, not the raw diversity metrics.
+What failed to differentiate: δ-θ coupling (p = 0.48) and self-transition rate (p = 0.53). The coupling measures are essentially near zero for all groups (0.02, 0.03, 0.01) — with only 19 channels, the cross-band eigenmode correlation is too noisy to detect the connectivity differences I predicted. Self-transition doesn't change because the rate of switching is similar across groups; it's what they switch to that differs.
+AD vs FTD: indistinguishable. This is the honest disappointment. AD and FTD have nearly identical eigenmode profiles (vocab 1052 vs 1078, entropy 8.57 vs 8.61, CV 0.945 vs 0.945). The eigenmode approach detects neurodegeneration vs healthy, but doesn't differentiate between types. This makes some sense at 19 channels — the spatial resolution isn't enough to see that FTD preferentially disrupts frontal eigenmodes while AD is more diffuse. With 64 channels you might see the difference. With 19, both diseases just look like "loss of dynamical structure."
+Bottom line assessment:
+The effect sizes are moderate (rank-biserial ≈ 0.33-0.37). These aren't massive separations — the box plots show substantial overlap. The existing literature achieves 70-80% classification accuracy with spectral features on this exact dataset. Eigenmode vocabulary alone wouldn't beat that. But it captures something different — not power, not coherence, but the organizational structure of the dynamics. It's potentially complementary to existing features, not a replacement.
+What's genuinely novel: nobody has shown that Alzheimer's brains have more eigenmode vocabulary with less structure. The loss-of-criticality interpretation is testable and connects to a real theoretical framework. And the Zipf exponent as a single-number disease marker (0.68 healthy vs 0.61 AD, p = 0.019) is clean and simple.
+What would strengthen this: running on a 64-channel Alzheimer's dataset (if one exists), which would give enough spatial resolution to test the AD-vs-FTD differential diagnosis hypothesis and recover the δ-θ coupling prediction.
