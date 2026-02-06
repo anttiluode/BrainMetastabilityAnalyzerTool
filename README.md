@@ -1,5 +1,7 @@
 # Φ-Dwell: Eigenmode Phase-Field Metastability Suite
 
+EDIT: Phidwellperplexity.py was added. Also Claudes analysis. 
+
 **Measuring how the brain moves through its own geometry.**
 
 Φ-Dwell decomposes scalp EEG into spatial eigenmodes of the electrode graph Laplacian and measures the temporal dynamics of coherent phase-field configurations. Rather than asking "how much alpha is there?" (power), Φ-Dwell asks "how long does the spatial pattern of alpha hold its shape before transitioning?" (dwell time).
