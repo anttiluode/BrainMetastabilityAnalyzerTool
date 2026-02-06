@@ -59,4 +59,43 @@ AD vs FTD: indistinguishable. This is the honest disappointment. AD and FTD have
 Bottom line assessment:
 The effect sizes are moderate (rank-biserial ≈ 0.33-0.37). These aren't massive separations — the box plots show substantial overlap. The existing literature achieves 70-80% classification accuracy with spectral features on this exact dataset. Eigenmode vocabulary alone wouldn't beat that. But it captures something different — not power, not coherence, but the organizational structure of the dynamics. It's potentially complementary to existing features, not a replacement.
 What's genuinely novel: nobody has shown that Alzheimer's brains have more eigenmode vocabulary with less structure. The loss-of-criticality interpretation is testable and connects to a real theoretical framework. And the Zipf exponent as a single-number disease marker (0.68 healthy vs 0.61 AD, p = 0.019) is clean and simple.
+
 What would strengthen this: running on a 64-channel Alzheimer's dataset (if one exists), which would give enough spatial resolution to test the AD-vs-FTD differential diagnosis hypothesis and recover the δ-θ coupling prediction.
+
+Compared to Raj et al eigenmode brain paper: https://pmc.ncbi.nlm.nih.gov/articles/PMC5480812/
+
+Good paper to find. Wang, Owen, Mukherjee & Raj (2017) is doing something related but fundamentally different from what you're doing, and the differences matter.
+
+**What Raj's group did:**
+
+They took the structural connectome from diffusion MRI tractography — the actual physical white matter wiring diagram, 80 brain regions connected by measured fiber tracts. They computed the graph Laplacian of that structural connectivity matrix and extracted its eigenmodes. Their key findings: the lowest few eigenmodes are conserved across healthy subjects (the brain's "standing waves" are universal), the second eigenmode is always left-right hemispheric diffusion, and in agenesis of the corpus callosum those eigenmodes split into hemisphere-specific modes with lower eigenvalues.
+
+**What you're doing that's different:**
+
+You're not using the structural connectome at all. You don't have tractography, you don't have MRI, you don't have the actual wiring diagram. You're building a graph Laplacian from the *electrode geometry* (the 2D positions of scalp sensors), which approximates the spatial layout but doesn't know anything about actual white matter tracts. Then — and this is the key difference — you're projecting *time-varying EEG signals* onto those eigenmodes at each moment and tracking which eigenmode dominates in each frequency band over time. You're measuring the *dynamics* of eigenmode activation, not the *structure* of the eigenmodes themselves.
+
+Raj is asking: what are the brain's spatial modes, and are they conserved? You're asking: given spatial modes, how does the brain *move through* them over time, and does that movement pattern change in disease?
+
+**What Raj got that you didn't:**
+
+The structural eigenmodes themselves are the finding. They showed the eigenmode *shapes* are conserved across subjects, the eigenmode *eigenvalues* change in disease (lower in AgCC), and the *importance maps* (which white matter voxels matter most for each eigenmode) correspond to known rich-club anatomy. They also showed eigenmodes predict functional connectivity from structural connectivity. This is all about the static architecture.
+
+They couldn't measure vocabulary, perplexity, transition grammar, criticality, or any temporal dynamics, because their eigenmodes are derived from a single structural scan. There's no time axis. The structural connectome doesn't change from second to second. It's a fixed infrastructure.
+
+**What you got that Raj didn't:**
+
+You're measuring how the brain *uses* the eigenmode infrastructure moment by moment. Raj showed the highway system is conserved across people. You showed the traffic patterns on those highways change during disease — AD brains have more diffuse traffic (higher vocabulary, lower concentration, flatter Zipf) but less organized traffic (lower CV, departure from criticality). Raj couldn't see this because tractography gives you the roads, not the cars.
+
+**Where they converge that matters:**
+
+Raj's reference [1] is his 2012 Neuron paper showing that network diffusion on the structural Laplacian models disease progression in dementia — Alzheimer's atrophy patterns follow the eigenmodes of the structural connectome. Your finding that AD brains show loss of eigenmode structure in EEG is the *functional* counterpart of that. Raj predicted from structure that AD would disrupt eigenmodes. You measured from function that it does.
+
+The Nunez references [44-46] in Raj's paper are particularly relevant to you. Raj explicitly notes that his eigenmode framework "evokes Nunez's conception of global EEG rhythms as spatial eigenmodes." Nunez proposed in the late 1990s that scalp EEG patterns are standing waves — eigenmodes of the cortical sheet. You're essentially implementing Nunez's idea with the addition of frequency-band tokenization and temporal grammar analysis. Raj was aware this bridge existed but worked on the structural side. You're working on the functional side.
+
+**The honest gap:**
+
+Your electrode-geometry Laplacian is a crude approximation of the actual structural Laplacian that Raj computed from tractography. The eigenmodes of a 19-electrode distance graph are not the same as eigenmodes of the actual white matter connectome. They correlate — because electrode geometry roughly reflects cortical geometry which roughly reflects connectivity — but they're not identical. This is why your δ-θ coupling failed to detect disease: that metric depends on the eigenmodes actually reflecting connectivity pathways, and with 19 channels and a geometric approximation, they don't capture enough of the real wiring to see tract-specific degradation.
+
+What your approach gains is *temporal resolution and clinical accessibility.* Raj needs an MRI scanner, tractography processing, and a structural scan that takes 30+ minutes. You need 2 minutes of EEG from a $500 clinical device. If eigenmode vocabulary from EEG correlates with the structural eigenmode degradation Raj measures from MRI, you'd have a cheap screening proxy for structural disconnection. That's the clinical pitch — not replacing Raj's approach but providing a fast, inexpensive functional readout of what his structural analysis measures precisely.
+
+
