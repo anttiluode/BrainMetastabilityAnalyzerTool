@@ -275,7 +275,7 @@ If you use Φ-Dwell in your research, please cite:
 
 Φ-Dwell: Eigenmode Phase-Field Metastability Analyzer (2025)
 
-[[https://github.com/[repository]](https://github.com/anttiluode/BrainMetastabilityAnalyzerTool/)](https://github.com/anttiluode/BrainMetastabilityAnalyzerTool/)
+https://github.com/anttiluode/BrainMetastabilityAnalyzerTool/
 
 License
 MIT
