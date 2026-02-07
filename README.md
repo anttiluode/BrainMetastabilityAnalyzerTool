@@ -1,6 +1,6 @@
 # Φ-Dwell: Eigenmode Phase-Field Metastability Suite
 
-EDIT: Phidwellperplexity.py was added. Also Claudes analysis. And phidwellalzheimers.py.
+EDIT: Phidwellperplexity.py was added. Also Claudes analysis. And phidwellalzheimers.py. And brain viscocity tool. It has seperate readme. 
 
 **Measuring how the brain moves through its own geometry.**
 
