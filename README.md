@@ -1,234 +1,226 @@
-# Φ-Dwell: Eigenmode Phase-Field Metastability Suite
-
-EDIT: Phidwellperplexity.py was added. Also Claudes analysis. And phidwellalzheimers.py. And brain viscocity tool. It has seperate readme. 
+# Φ-Dwell: Eigenmode Phase-Field Metastability Analysis of Scalp EEG
 
 **Measuring how the brain moves through its own geometry.**
 
-Φ-Dwell decomposes scalp EEG into spatial eigenmodes of the electrode graph Laplacian and measures the temporal dynamics of coherent phase-field configurations. Rather than asking "how much alpha is there?" (power), Φ-Dwell asks "how long does the spatial pattern of alpha hold its shape before transitioning?" (dwell time).
+Φ-Dwell decomposes scalp EEG into spatial eigenmodes of the electrode graph Laplacian and measures the temporal dynamics of coherent phase-field configurations. Rather than asking "how much alpha power is there?", Φ-Dwell asks "how long does the spatial pattern hold its shape, what vocabulary of configurations does the brain use, and does that vocabulary change in disease?"
 
-The suite reveals band-specific dynamical regimes, state-dependent metastability signatures, a universal frequency hierarchy across subjects, and task-dependent expansion of the brain's configuration vocabulary.
-
----
-
-## Core Measurement
-
-At each 10ms time step, for 64 electrodes × 5 frequency bands:
-
-1. Bandpass filter → Hilbert transform → instantaneous phase per channel
-2. Project the phase field onto 8 spatial eigenmodes of the electrode geometry
-3. Track eigenmode coefficient trajectories over time
-4. Detect "dwells" (stable phase-field orientations) and "transitions"
-
-Result: a **40-dimensional state vector** (8 eigenmodes × 5 bands) that traces the brain's trajectory through configuration space. Dwell times, transition grammars, and statistical regime classifications encode the brain's dynamical state.
+The suite has been validated on 109 healthy subjects (PhysioNet Motor Movement/Imagery Dataset) and 88 clinical subjects (OpenNeuro ds004504: 36 Alzheimer's, 23 frontotemporal dementia, 29 age-matched controls).
 
 ---
 
 ## Key Findings
 
-### Finding 1 — Five-Band Dwell Hierarchy (11 subjects)
+### 1. Five-Band Dwell Hierarchy
 
-Mean dwell times for Mode 1 (anterior–posterior eigenmode), eyes open:
+Each frequency band operates in a qualitatively different dynamical regime. Mean dwell times for Mode 1 (anterior-posterior), eyes open, 11 subjects:
 
-| Band  | Mean Dwell | CV   | Regime              |
-|-------|------------|------|---------------------|
-| Delta | 151 ms     | ~1.0 | Near-exponential    |
-| Theta | 27 ms      | ~1.4 | Critical (power-law)|
-| Alpha | 16 ms      | ~1.3 | Critical (power-law)|
-| Beta  | 13 ms      | ~1.3 | Bursty              |
-| Gamma | 12 ms      | ~0.5 | Clocklike           |
+| Band  | Mean Dwell | CV   | Regime           |
+|-------|-----------|------|------------------|
+| Delta | 151 ms    | ~1.0 | Near-exponential |
+| Theta | 27 ms     | ~1.4 | Critical         |
+| Alpha | 16 ms     | ~1.3 | Critical         |
+| Beta  | 13 ms     | ~1.3 | Bursty           |
+| Gamma | 12 ms     | ~0.5 | Clocklike        |
 
-The brain's slowest rhythms create spatial phase patterns that persist 13× longer than its fastest. Each band operates in a qualitatively different dynamical regime. This is Baker & Cariani's oscillatory cascade measured through eigenmode phase geometry.
+### 2. Alpha-Theta Double Dissociation
 
-### Finding 2 — Alpha–Theta Double Dissociation (11 subjects)
+Theta dwells longer eyes-open (p=0.008). Alpha dwells longer eyes-closed (p=0.068). Opposite directions in adjacent bands rule out generic artifacts.
 
-| Band  | Eyes Open | Eyes Closed | Direction | p-value |
-|-------|-----------|-------------|-----------|---------|
-| Theta | 26.5 ms   | 23.5 ms     | EO > EC   | 0.008   |
-| Alpha | 16.3 ms   | 21.1 ms     | EC > EO   | 0.068   |
+### 3. Universal Eigenmode Persistence
 
-Theta dwells longer when the eyes are open (active spatial scanning sustains theta sweeps). Alpha dwells longer when the eyes are closed (cortical idle rhythm creates a stable standing wave). These opposite directions in adjacent frequency bands rule out generic artifacts — no signal processing confound produces reversed effects in two bands on the same data.
+Self-transition rates across 20 subjects show CV < 1%. The hierarchy δ > θ > γ > α > β is preserved in every subject. 83% of attractors are critical (CV > 1.0).
 
-### Finding 3 — Universal Eigenmode Persistence (20 subjects)
+### 4. Task Doubles the Vocabulary
 
-| Band  | Self-Transition | CV Across Subjects |
-|-------|-----------------|-------------------|
-| Delta | 0.898 ± 0.004   | 0.5%              |
-| Theta | 0.849 ± 0.004   | 0.5%              |
-| Gamma | 0.815 ± 0.005   | 0.6%              |
-| Alpha | 0.809 ± 0.006   | 0.7%              |
-| Beta  | 0.798 ± 0.005   | 0.7%              |
+Motor imagery expands the eigenmode configuration vocabulary from ~800 to ~2,000 words (5/5 subjects). Two-thirds of task words never appear at rest.
 
-Cross-subject CV under 1% — this is a structural constant of the human brain, not a statistical tendency. The hierarchy δ > θ > γ > α > β is preserved in every subject tested. The gamma-above-beta inversion is consistent and reflects known gamma binding phenomena. 83% of detected attractors are in critical regime (CV > 1.0). Zero are clocklike. The brain at rest is a critical system, not a clock.
+### 5. Rest and Task Follow Different Grammars
 
-### Finding 4 — Task-Dependent Vocabulary Expansion (5 subjects)
+Cross-condition bigram perplexity is 10-25× higher than within-condition (5/5 subjects, p=0.049). The brain during task doesn't just use more words — it follows different sequential transition rules.
 
-The 40D eigenmode state is tokenized into discrete "words" (5-tuples of dominant mode per band). Motor imagery vs rest:
+### 6. Eigenmode Vocabulary Detects Alzheimer's Disease
 
-| Subject | Rest Vocab | Task Vocab | Ratio | Task-Only Words | Jaccard |
-|---------|-----------|------------|-------|-----------------|---------|
-| S001    | 822       | 1,885      | 2.3×  | 1,240           | 0.31    |
-| S002    | 782       | 1,535      | 2.0×  | 944             | 0.34    |
-| S003    | 840       | 1,899      | 2.3×  | 1,257           | 0.31    |
-| S004    | 941       | 2,640      | 2.8×  | 1,965           | 0.23    |
-| S005    | 1,628     | 3,467      | 2.1×  | 2,386           | 0.27    |
+On OpenNeuro ds004504 (88 subjects), five Φ-Dwell metrics significantly separate AD and FTD from healthy controls:
 
-The brain at rest uses ~800–1,600 eigenmode words out of 32,768 possible. During motor imagery, this doubles. Two-thirds of the task vocabulary doesn't exist at rest — the brain enters regions of eigenmode configuration space that it never visits when idle. Shannon entropy rises and transition predictability drops in every subject tested.
+| Metric | CN | AD | FTD | p-value |
+|--------|----|----|-----|---------|
+| Vocabulary Size | 953 | 1052 | 1078 | 0.035 |
+| Shannon Entropy | 8.26 | 8.57 | 8.61 | 0.032 |
+| Mean CV (Criticality) | 0.983 | 0.945 | 0.945 | 0.022 |
+| Top-5 Concentration | 0.154 | 0.124 | 0.127 | 0.035 |
+| Zipf α | 0.681 | 0.612 | 0.628 | 0.034 |
+
+AD brains show *more* vocabulary with *less* structure — loss of organized dynamics, not loss of repertoire. The brain can no longer hold a pattern.
+
+### 7. Dwell Gradient: Strongest Alzheimer's Biomarker
+
+The β-Sieve analysis reveals the dwell gradient across the band hierarchy (δ→γ) as the single most discriminative metric (KW p=0.0015, MMSE correlation ρ=0.408, p=0.0001), driven by collapse of alpha-band eigenmode stability.
 
 ---
 
 ## Tool Suite
 
-### `eigenmode_metastability.py` — Foundation analyzer
+### Core Analysis
 
-The core tool. Computes dwell-time distributions per eigenmode, per band, per condition. Compares eyes-open vs eyes-closed and brain vs pink noise controls. Produces 9-panel figures with survival functions, effect sizes, and topographic maps.
+**`eigenmode_metastability.py`** — Foundation analyzer. Computes dwell-time distributions per eigenmode, per band, per condition. Compares eyes-open vs eyes-closed. Produces multi-panel figures with survival functions, effect sizes, and topographic maps.
 
 ```bash
-# Single band, 20 subjects
 python eigenmode_metastability.py "physionet.org/files/eegmmidb/1.0.0/" --band alpha --subjects 20
-
-# All five bands
 python eigenmode_metastability.py "physionet.org/files/eegmmidb/1.0.0/" --subjects 109 --all
 ```
 
-### `phidwell_deep_analyzer.py` — Configuration space explorer
-
-Extracts the full attractor catalog, eigenmode transition grammar, cross-band coupling matrix, and regime classification for each subject. Saves JSON fingerprints for cross-subject comparison.
+**`phidwell_deep_analyzer.py`** — Configuration space explorer. Extracts the full attractor catalog, eigenmode transition grammar, cross-band coupling matrix, and regime classification. Saves JSON fingerprints.
 
 ```bash
-# Single subject
-python phidwell_deep_analyzer.py "physionet.org/files/eegmmidb/1.0.0/S001/"
-
-# 20 subjects with fingerprint export
 python phidwell_deep_analyzer.py "physionet.org/files/eegmmidb/1.0.0/" --subjects 20
 ```
 
-### `phidwell_cross_subjects.py` — Population-level analysis
-
-Loads fingerprint JSONs from the deep analyzer, identifies universals vs individual differences, performs hierarchical clustering, extracts per-subject anomaly signatures, and tests feature discriminability.
+**`phidwell_cross_subjects.py`** — Population-level analysis. Loads fingerprint JSONs, identifies universals vs individual differences, performs hierarchical clustering.
 
 ```bash
 python phidwell_cross_subjects.py "physionet.org/files/eegmmidb/1.0.0/phidwell_all_fingerprints.json"
 ```
 
-### `phidwell_grammar_decoder.py` — Rest vs task vocabulary comparison
+### Vocabulary & Grammar
 
-Tokenizes EEG into eigenmode "words," compares resting baseline (R01/R02) to motor imagery (R04/R08/R12), computes vocabulary expansion, entropy shifts, enriched/depleted words, trigram "phrases," and L-R laterality measures.
+**`phidwell_grammar_decoder.py`** — Rest vs task vocabulary comparison. Tokenizes EEG into eigenmode "words," compares resting baseline to motor imagery, computes vocabulary expansion, entropy shifts, enriched/depleted words, and laterality measures.
 
 ```bash
 python phidwell_grammar_decoder.py "physionet.org/files/eegmmidb/1.0.0/" --subjects 5
 ```
 
-### `phidwell_macroscope_standalone.py` — Real-time visualization
-
-Live matplotlib dashboard with 7 panels: phase portrait (brain's orbit through eigenmode space), regime detector, dwell histogram, eigenmode bars, band power, and trajectory trail. Works with EDF files or in synthetic demo mode.
+**`phidwell_perplexity.py`** — Cross-condition perplexity analyzer. Trains bigram models on rest and task eigenmode word sequences, then measures cross-perplexity. Quantifies the "distance of thought" — how different task grammar is from rest grammar. Includes masked prediction accuracy, surprisal timecourses, and Zipf analysis.
 
 ```bash
-# With EDF data
-python phidwell_macroscope_standalone.py "path/to/file.edf" --band alpha
+python phidwell_perplexity.py "physionet.org/files/eegmmidb/1.0.0/" --subjects 5
+```
 
-# Demo mode (no EEG needed)
+**`braingrammargemini.py`** — Standalone eigenmode vocabulary tokenizer. Converts continuous EEG into discrete eigenmode words and computes vocabulary statistics, bigram syntax, and entropy.
+
+### Clinical Application
+
+**`phidwell_alzheimers.py`** — Alzheimer's and FTD detection from resting EEG. Processes OpenNeuro ds004504 (19-channel, 10-20 system). For each of 88 subjects computes: vocabulary size, entropy, perplexity, self-transition rate, cross-band coupling, criticality (CV), Zipf exponent, and per-band metrics. Runs Kruskal-Wallis tests across AD/FTD/CN groups, pairwise Mann-Whitney with effect sizes, and MMSE correlations. Produces 12-panel diagnostic dashboard.
+
+```bash
+# Download the dataset
+openneuro download --snapshot 1.0.8 ds004504 ds004504/
+
+# Run analysis
+python phidwell_alzheimers.py "path/to/ds004504/"
+```
+
+**`brain_viscosity.py`** — β-Sieve × Φ-Dwell brain viscosity analyzer. Applies the β-gradient concept from neural network grokking research to brain eigenmode dynamics. The frequency band hierarchy (δ→θ→α→β→γ) serves as a "depth" axis analogous to neural network layers. Computes roughness profiles, dwell gradients, and a combined viscosity index. Runs from existing Φ-Dwell JSON results (instant) or directly on raw EEG .set files.
+
+```bash
+# From existing results (fast reanalysis)
+python brain_viscosity.py phidwell_alzheimer_results.json
+
+# From raw EEG (full pipeline)
+python brain_viscosity.py "path/to/ds004504/" --full
+```
+
+### Visualization
+
+**`phidwell_macroscope_standalone.py`** — Real-time visualization dashboard with 7 panels: phase portrait, regime detector, dwell histogram, eigenmode bars, band power, and trajectory trail. Works with EDF files or synthetic demo mode.
+
+```bash
+python phidwell_macroscope_standalone.py "path/to/file.edf" --band alpha
 python phidwell_macroscope_standalone.py --demo
 ```
 
-### `holographic_metastability_analyzer.py` — Original holographic approach
+---
 
-The precursor tool using direct holographic field computation (wave-vector k-parameter) rather than eigenmode decomposition. Included for historical completeness and comparison.
+## Method
 
-### `brain_grammar.py` — Eigenmode vocabulary tokenizer
+At each time step, for N electrodes × 5 frequency bands:
 
-Standalone tokenizer that converts continuous EEG into discrete eigenmode "words" and computes vocabulary statistics, bigram syntax, and entropy. Used as a component by the grammar decoder.
+1. Bandpass filter → Hilbert transform → instantaneous phase per channel
+2. Project the phase field onto spatial eigenmodes of the electrode graph Laplacian
+3. Track dominant eigenmode per band over time
+4. Tokenize into discrete "words" (5-tuples of dominant mode per band)
+5. Analyze: dwell times, vocabulary, transition grammar, perplexity, criticality
+
+The graph Laplacian eigenmodes form a natural spatial basis ordered by spatial frequency:
+
+| Mode | Pattern |
+|------|---------|
+| 1 | Anterior ↔ Posterior |
+| 2 | Left ↔ Right |
+| 3 | Center ↔ Periphery |
+| 4 | Diagonal quadrants |
+| 5-8 | Higher-order patterns |
+
+This follows directly from spectral graph theory of brain networks (Wang, Owen, Mukherjee & Raj, 2017, *PLoS Computational Biology*). Where Raj's group applies the graph Laplacian to the structural connectome from diffusion MRI tractography, Φ-Dwell applies it to the electrode geometry and measures how the brain's *functional dynamics* move through eigenmode space over time.
 
 ---
 
-## Theoretical Framework
+## Datasets
 
-Φ-Dwell sits at the intersection of four research programs:
-
-**Pribram's Holographic Brain Theory (1971)** — The brain stores and processes information through wave interference patterns. Φ-Dwell constructs exactly this kind of holographic field from scalp EEG phases and measures its temporal dynamics.
-
-**Wang et al. — Spectral Graph Theory of the Structural Connectome (2017)** — The brain's connectivity defines a graph whose Laplacian eigenmodes form a natural spatial basis. Low eigenmodes capture global patterns; higher eigenmodes capture finer structure. Eigenvalues predict characteristic timescales. Φ-Dwell's graph Laplacian eigenmodes are the electrode-geometry analog.
-
-**Baker & Cariani — A Time-Domain Account of Brain Function (2025)** — Neural processing operates through an oscillatory cascade from fast (gamma) to slow (delta) bands, with each stage representing deeper cognitive processing. Φ-Dwell's dwell-time hierarchy (δ 151ms → γ 12ms) directly measures this cascade.
-
-**Vollan et al. — Theta Sweeps in Entorhinal–Hippocampal Maps (2025)** — Grid cells produce left–right-alternating spatial sweeps within theta cycles (~125ms). Φ-Dwell's theta dwell time is consistent with this mechanism's timescale.
-
-The synthesis: grid module spatial scales → eigenmode hierarchy of connectivity → oscillatory cascade across bands → holographic phase-field persistence measurable from scalp EEG.
-
----
-
-## Method Details
-
-### Eigenmode Construction
-
-Given N electrode positions, construct:
-- Adjacency matrix: A_ij = exp(−d²_ij / 2σ²)
-- Graph Laplacian: L = D − A (where D is the degree matrix)
-- Eigendecomposition: L = V Λ Vᵀ
-
-First 8 non-trivial eigenvectors form the spatial basis:
-
-| Mode | λ     | Spatial Pattern       |
-|------|-------|-----------------------|
-| 1    | 6.54  | Anterior ↔ Posterior  |
-| 2    | 7.39  | Left ↔ Right          |
-| 3    | 10.87 | Center ↔ Periphery   |
-| 4    | 12.18 | Diagonal quadrants    |
-| 5–8  | 13–14 | Higher-order patterns |
-
-### Dwell Detection
-
-At each time window, the eigenmode coefficient angle θₘ(t) traces the dominant orientation of the phase field projected onto spatial mode m. A dwell occurs when θₘ changes by less than π/4 between successive windows. Dwell times are collected per mode, per band, per condition.
-
-### Controls
-
-Pink noise (1/f spectrum, 64 independent channels) processed through the identical pipeline establishes the baseline expected from spectrally realistic but spatially unstructured signals. Brain measurements exceeding this baseline indicate genuine spatial phase organization.
-
----
-
-## Dataset
-
-Validated on the [PhysioNet EEG Motor Movement/Imagery Dataset](https://physionet.org/content/eegmmidb/1.0.0/):
-
-- 109 subjects, 64 channels (10–10 system), 160 Hz
-- R01: Eyes open baseline (1 min)
-- R02: Eyes closed baseline (1 min)
-- R03–R14: Motor execution and imagery tasks
+**PhysioNet EEG Motor Movement/Imagery Dataset** — 109 subjects, 64 channels (10-10 system), 160 Hz. Eyes-open/closed baselines plus motor execution and imagery tasks.
 
 ```bash
 wget -r -N -c -np https://physionet.org/files/eegmmidb/1.0.0/
+```
+
+**OpenNeuro ds004504** — 36 Alzheimer's, 23 FTD, 29 healthy controls. 19 channels (10-20 system), 500 Hz, resting-state eyes-closed. MMSE scores available for all 88 subjects. Published by Miltiadous et al. (2023).
+
+```bash
+npm install -g @openneuro/cli
+openneuro download --snapshot 1.0.8 ds004504 ds004504/
+```
+
+---
+
+## Results
+
+The `Results/` folder contains output files from analyses including JSON data, PNG figures, and summary statistics.
+
+`PAPER.md.pdf` contains the full technical writeup of the Φ-Dwell framework and findings.
+
+---
+
+## Theoretical Context
+
+Φ-Dwell connects four research programs:
+
+- **Spectral graph theory of brain networks** (Raj et al., 2012; Wang et al., 2017) — Laplacian eigenmodes as the natural basis for brain dynamics and disease progression
+- **Baker & Cariani's oscillatory cascade** (2025) — Frequency-band hierarchy from fast to slow as depth of cognitive processing
+- **Critical brain hypothesis** — Optimal computation at the edge of criticality, measured directly via dwell-time coefficient of variation
+- **Phase transitions in learning** — The β-Sieve viscosity probe bridges neural network grokking dynamics with brain eigenmode organization
+
+---
+
+## Requirements
+
+```
+Python 3.10+
+numpy, scipy, matplotlib, mne
+Optional: scikit-learn, tabulate, networkx
+```
+
+For OpenNeuro dataset downloads:
+```
+npm install -g @openneuro/cli
 ```
 
 ---
 
 ## What This Is and What It Isn't
 
-**What it measures:** Temporal persistence of macroscopic phase-field configurations projected onto spatial eigenmodes. These are volume-conducted signatures of large-scale neural coordination.
+**What it measures:** Temporal persistence and sequential grammar of macroscopic phase-field configurations projected onto spatial eigenmodes. Volume-conducted signatures of large-scale neural coordination.
 
-**What it does not measure:** Individual neurons, thought content, or single-cell activity. The method cannot decode what someone is thinking — it characterizes the dynamical regime and geometric configuration of large-scale brain activity.
+**What it does not measure:** Individual neurons, thought content, or single-cell activity.
 
-**What's novel:** Five specific claims are new to this work:
-1. Dwell-time distributions per eigenmode per band reveal qualitatively different dynamical regimes (exponential, critical, bursty, clocklike)
-2. Alpha and theta show opposite state-dependent effects (double dissociation)
-3. Eigenmode self-transition rates are universal across subjects (CV < 1%)
-4. Cross-band eigenmode coupling (spatial mode co-selection across frequencies) is measurable and individually variable
-5. The eigenmode configuration vocabulary doubles during motor imagery relative to rest
+**What's novel:** Eigenmode vocabulary size, eigenmode transition grammar perplexity, cross-band eigenmode coupling, dwell gradient across the band hierarchy, and their application as neurodegeneration biomarkers.
 
-**What needs replication:** Finding 4 is from 5 subjects and needs larger N. The per-band self-transition shifts during task are individually large but directionally inconsistent at n=5. Event-locked analysis (aligning to task onset markers) has not yet been performed.
-
----
-
-## Requirements
-
-- Python 3.10+
-- numpy, scipy, matplotlib, mne, scikit-learn
-- Optional: tabulate, networkx
+**What needs more work:** AD/FTD differential diagnosis did not separate at 19 channels (would need 64+). Coupling metrics need higher spatial resolution. Task perplexity results are from 5 subjects. All findings are from public datasets and await independent replication.
 
 ---
 
 ## Citation
 
 > Luode, A. & Claude (Anthropic). (2025).
-> **Φ-Dwell: Eigenmode Phase-Field Metastability Suite.**
+> **Φ-Dwell: Eigenmode Phase-Field Metastability Analysis of Scalp EEG.**
 > https://github.com/anttiluode/BrainMetastabilityAnalyzerTool/
 
 ---
@@ -236,9 +228,3 @@ wget -r -N -c -np https://physionet.org/files/eegmmidb/1.0.0/
 ## License
 
 MIT
-
----
-
-## Acknowledgments
-
-Developed through collaborative research sessions between **Antti Luode** ([PerceptionLab](https://github.com/anttiluode)) and **Claude** (Anthropic), February 2025. Built on foundations from Pribram, Wang, Baker, Cariani, Vollan, and their collaborators. Validated on the PhysioNet EEG Motor Movement/Imagery Dataset (Goldberger et al., 2000; Schalk et al., 2004).
