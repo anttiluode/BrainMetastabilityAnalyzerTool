@@ -157,7 +157,12 @@ def _band_power(freqs: np.ndarray, psd: np.ndarray, lo: float, hi: float) -> flo
     if np.count_nonzero(mask) < 2:
         return float("nan")
     mean_psd = np.mean(psd[:, mask], axis=0)
-    return float(np.trapz(mean_psd, freqs[mask]))
+    # NumPy 2.x removed np.trapz in favor of np.trapezoid. Keep compatibility
+    # with older NumPy releases so the audit runs across both environments.
+    integrate = getattr(np, "trapezoid", None)
+    if integrate is None:  # pragma: no cover - old NumPy compatibility
+        integrate = np.trapz
+    return float(integrate(mean_psd, freqs[mask]))
 
 
 def spectral_features(filepath: str, max_duration_s: float = 120.0) -> dict:
