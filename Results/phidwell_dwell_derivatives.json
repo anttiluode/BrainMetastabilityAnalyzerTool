@@ -1,0 +1,1498 @@
+{
+  "sub-001": {
+    "group": "AD",
+    "mmse": 16.0,
+    "age": 57.0,
+    "gender": "F",
+    "band_mean_dwell": {
+      "delta": 174.82517482517483,
+      "theta": 197.1608832807571,
+      "alpha": 141.08352144469526,
+      "beta": 54.63286713286713,
+      "gamma": 64.00409626216077
+    },
+    "dwell_gradient": -0.3260384858853648,
+    "n_channels": 19,
+    "duration_s": 120.0,
+    "source_file": "E:\\DocsHouse\\575 45 degree angle is real in brain\\ds004504-download\\derivatives\\sub-001\\eeg\\sub-001_task-eyesclosed_eeg.set"
+  },
+  "sub-002": {
+    "group": "AD",
+    "mmse": 22.0,
+    "age": 78.0,
+    "gender": "F",
+    "band_mean_dwell": {
+      "delta": 181.9505094614265,
+      "theta": 125.50200803212851,
+      "alpha": 247.52475247524754,
+      "beta": 60.88650754992694,
+      "gamma": 47.72814051164567
+    },
+    "dwell_gradient": -0.33608739556976713,
+    "n_channels": 19,
+    "duration_s": 120.0,
+    "source_file": "E:\\DocsHouse\\575 45 degree angle is real in brain\\ds004504-download\\derivatives\\sub-002\\eeg\\sub-002_task-eyesclosed_eeg.set"
+  },
+  "sub-003": {
+    "group": "AD",
+    "mmse": 14.0,
+    "age": 70.0,
+    "gender": "M",
+    "band_mean_dwell": {
+      "delta": 192.30769230769232,
+      "theta": 125.62814070351759,
+      "alpha": 282.80542986425337,
+      "beta": 51.802735184417735,
+      "gamma": 52.279381012128816
+    },
+    "dwell_gradient": -0.3452159316457546,
+    "n_channels": 19,
+    "duration_s": 120.0,
+    "source_file": "E:\\DocsHouse\\575 45 degree angle is real in brain\\ds004504-download\\derivatives\\sub-003\\eeg\\sub-003_task-eyesclosed_eeg.set"
+  },
+  "sub-004": {
+    "group": "AD",
+    "mmse": 20.0,
+    "age": 67.0,
+    "gender": "F",
+    "band_mean_dwell": {
+      "delta": 213.67521367521368,
+      "theta": 181.6860465116279,
+      "alpha": 127.29124236252545,
+      "beta": 44.65880671668453,
+      "gamma": 49.27079227433977
+    },
+    "dwell_gradient": -0.42899766079203483,
+    "n_channels": 19,
+    "duration_s": 120.0,
+    "source_file": "E:\\DocsHouse\\575 45 degree angle is real in brain\\ds004504-download\\derivatives\\sub-004\\eeg\\sub-004_task-eyesclosed_eeg.set"
+  },
+  "sub-005": {
+    "group": "AD",
+    "mmse": 22.0,
+    "age": 70.0,
+    "gender": "M",
+    "band_mean_dwell": {
+      "delta": 178.826895565093,
+      "theta": 142.53135689851769,
+      "alpha": 128.6008230452675,
+      "beta": 55.85344057193923,
+      "gamma": 55.21201413427562
+    },
+    "dwell_gradient": -0.3251805164119015,
+    "n_channels": 19,
+    "duration_s": 120.0,
+    "source_file": "E:\\DocsHouse\\575 45 degree angle is real in brain\\ds004504-download\\derivatives\\sub-005\\eeg\\sub-005_task-eyesclosed_eeg.set"
+  },
+  "sub-006": {
+    "group": "AD",
+    "mmse": 14.0,
+    "age": 61.0,
+    "gender": "F",
+    "band_mean_dwell": {
+      "delta": 180.11527377521614,
+      "theta": 135.42795232936078,
+      "alpha": 366.5689149560117,
+      "beta": 53.55612682090831,
+      "gamma": 47.01015419330575
+    },
+    "dwell_gradient": -0.35720089638651975,
+    "n_channels": 19,
+    "duration_s": 120.0,
+    "source_file": "E:\\DocsHouse\\575 45 degree angle is real in brain\\ds004504-download\\derivatives\\sub-006\\eeg\\sub-006_task-eyesclosed_eeg.set"
+  },
+  "sub-007": {
+    "group": "AD",
+    "mmse": 20.0,
+    "age": 79.0,
+    "gender": "F",
+    "band_mean_dwell": {
+      "delta": 184.6381093057607,
+      "theta": 164.257555847569,
+      "alpha": 137.5137513751375,
+      "beta": 52.21386800334169,
+      "gamma": 57.49770009199632
+    },
+    "dwell_gradient": -0.34428095438671935,
+    "n_channels": 19,
+    "duration_s": 120.0,
+    "source_file": "E:\\DocsHouse\\575 45 degree angle is real in brain\\ds004504-download\\derivatives\\sub-007\\eeg\\sub-007_task-eyesclosed_eeg.set"
+  },
+  "sub-008": {
+    "group": "AD",
+    "mmse": 16.0,
+    "age": 62.0,
+    "gender": "M",
+    "band_mean_dwell": {
+      "delta": 232.77467411545624,
+      "theta": 154.7029702970297,
+      "alpha": 140.92446448703495,
+      "beta": 64.66632177961718,
+      "gamma": 76.82851874615858
+    },
+    "dwell_gradient": -0.306306355061045,
+    "n_channels": 19,
+    "duration_s": 120.0,
+    "source_file": "E:\\DocsHouse\\575 45 degree angle is real in brain\\ds004504-download\\derivatives\\sub-008\\eeg\\sub-008_task-eyesclosed_eeg.set"
+  },
+  "sub-009": {
+    "group": "AD",
+    "mmse": 23.0,
+    "age": 77.0,
+    "gender": "F",
+    "band_mean_dwell": {
+      "delta": 185.1851851851852,
+      "theta": 150.06002400960384,
+      "alpha": 200.64205457463885,
+      "beta": 60.5913717886573,
+      "gamma": 59.495478343645885
+    },
+    "dwell_gradient": -0.31455018225951775,
+    "n_channels": 19,
+    "duration_s": 120.0,
+    "source_file": "E:\\DocsHouse\\575 45 degree angle is real in brain\\ds004504-download\\derivatives\\sub-009\\eeg\\sub-009_task-eyesclosed_eeg.set"
+  },
+  "sub-010": {
+    "group": "AD",
+    "mmse": 20.0,
+    "age": 69.0,
+    "gender": "M",
+    "band_mean_dwell": {
+      "delta": 184.6381093057607,
+      "theta": 132.8374070138151,
+      "alpha": 133.9764201500536,
+      "beta": 49.98000799680128,
+      "gamma": 49.368088467614534
+    },
+    "dwell_gradient": -0.35740747676404183,
+    "n_channels": 19,
+    "duration_s": 120.0,
+    "source_file": "E:\\DocsHouse\\575 45 degree angle is real in brain\\ds004504-download\\derivatives\\sub-010\\eeg\\sub-010_task-eyesclosed_eeg.set"
+  },
+  "sub-011": {
+    "group": "AD",
+    "mmse": 22.0,
+    "age": 71.0,
+    "gender": "M",
+    "band_mean_dwell": {
+      "delta": 186.84603886397608,
+      "theta": 143.67816091954023,
+      "alpha": 165.78249336870027,
+      "beta": 48.98119122257053,
+      "gamma": 56.61231884057971
+    },
+    "dwell_gradient": -0.34266374795400223,
+    "n_channels": 19,
+    "duration_s": 120.0,
+    "source_file": "E:\\DocsHouse\\575 45 degree angle is real in brain\\ds004504-download\\derivatives\\sub-011\\eeg\\sub-011_task-eyesclosed_eeg.set"
+  },
+  "sub-012": {
+    "group": "AD",
+    "mmse": 18.0,
+    "age": 63.0,
+    "gender": "M",
+    "band_mean_dwell": {
+      "delta": 183.8235294117647,
+      "theta": 114.99540018399264,
+      "alpha": 139.04338153503892,
+      "beta": 61.78942165101335,
+      "gamma": 50.342327829238826
+    },
+    "dwell_gradient": -0.317553584031556,
+    "n_channels": 19,
+    "duration_s": 120.0,
+    "source_file": "E:\\DocsHouse\\575 45 degree angle is real in brain\\ds004504-download\\derivatives\\sub-012\\eeg\\sub-012_task-eyesclosed_eeg.set"
+  },
+  "sub-013": {
+    "group": "AD",
+    "mmse": 20.0,
+    "age": 64.0,
+    "gender": "F",
+    "band_mean_dwell": {
+      "delta": 182.7485380116959,
+      "theta": 164.90765171503958,
+      "alpha": 129.93762993762994,
+      "beta": 44.29482636428065,
+      "gamma": 47.09871891484551
+    },
+    "dwell_gradient": -0.39788637782982683,
+    "n_channels": 19,
+    "duration_s": 120.0,
+    "source_file": "E:\\DocsHouse\\575 45 degree angle is real in brain\\ds004504-download\\derivatives\\sub-013\\eeg\\sub-013_task-eyesclosed_eeg.set"
+  },
+  "sub-014": {
+    "group": "AD",
+    "mmse": 14.0,
+    "age": 77.0,
+    "gender": "M",
+    "band_mean_dwell": {
+      "delta": 239.0057361376673,
+      "theta": 194.70404984423675,
+      "alpha": 145.85764294049008,
+      "beta": 56.89576695493855,
+      "gamma": 61.51574803149607
+    },
+    "dwell_gradient": -0.3908447956258318,
+    "n_channels": 19,
+    "duration_s": 120.0,
+    "source_file": "E:\\DocsHouse\\575 45 degree angle is real in brain\\ds004504-download\\derivatives\\sub-014\\eeg\\sub-014_task-eyesclosed_eeg.set"
+  },
+  "sub-015": {
+    "group": "AD",
+    "mmse": 18.0,
+    "age": 61.0,
+    "gender": "M",
+    "band_mean_dwell": {
+      "delta": 200.32051282051282,
+      "theta": 130.48016701461378,
+      "alpha": 144.67592592592592,
+      "beta": 51.103843008994275,
+      "gamma": 55.72893446277307
+    },
+    "dwell_gradient": -0.34588449921318537,
+    "n_channels": 19,
+    "duration_s": 120.0,
+    "source_file": "E:\\DocsHouse\\575 45 degree angle is real in brain\\ds004504-download\\derivatives\\sub-015\\eeg\\sub-015_task-eyesclosed_eeg.set"
+  },
+  "sub-016": {
+    "group": "AD",
+    "mmse": 14.0,
+    "age": 68.0,
+    "gender": "F",
+    "band_mean_dwell": {
+      "delta": 184.0942562592047,
+      "theta": 143.67816091954023,
+      "alpha": 114.6788990825688,
+      "beta": 47.782874617737,
+      "gamma": 50.875050875050874
+    },
+    "dwell_gradient": -0.36311868330314157,
+    "n_channels": 19,
+    "duration_s": 120.0,
+    "source_file": "E:\\DocsHouse\\575 45 degree angle is real in brain\\ds004504-download\\derivatives\\sub-016\\eeg\\sub-016_task-eyesclosed_eeg.set"
+  },
+  "sub-017": {
+    "group": "AD",
+    "mmse": 6.0,
+    "age": 61.0,
+    "gender": "F",
+    "band_mean_dwell": {
+      "delta": 205.5921052631579,
+      "theta": 182.7485380116959,
+      "alpha": 187.68768768768768,
+      "beta": 56.586690810321414,
+      "gamma": 53.35040546308152
+    },
+    "dwell_gradient": -0.38308652420353506,
+    "n_channels": 19,
+    "duration_s": 120.0,
+    "source_file": "E:\\DocsHouse\\575 45 degree angle is real in brain\\ds004504-download\\derivatives\\sub-017\\eeg\\sub-017_task-eyesclosed_eeg.set"
+  },
+  "sub-018": {
+    "group": "AD",
+    "mmse": 23.0,
+    "age": 73.0,
+    "gender": "F",
+    "band_mean_dwell": {
+      "delta": 180.8972503617945,
+      "theta": 176.05633802816902,
+      "alpha": 169.37669376693768,
+      "beta": 62.09637357178341,
+      "gamma": 55.85344057193923
+    },
+    "dwell_gradient": -0.33577351404302735,
+    "n_channels": 19,
+    "duration_s": 120.0,
+    "source_file": "E:\\DocsHouse\\575 45 degree angle is real in brain\\ds004504-download\\derivatives\\sub-018\\eeg\\sub-018_task-eyesclosed_eeg.set"
+  },
+  "sub-019": {
+    "group": "AD",
+    "mmse": 14.0,
+    "age": 62.0,
+    "gender": "F",
+    "band_mean_dwell": {
+      "delta": 206.27062706270627,
+      "theta": 126.51821862348179,
+      "alpha": 156.44555694618273,
+      "beta": 49.40711462450593,
+      "gamma": 51.588939331407346
+    },
+    "dwell_gradient": -0.3671165912746084,
+    "n_channels": 19,
+    "duration_s": 120.0,
+    "source_file": "E:\\DocsHouse\\575 45 degree angle is real in brain\\ds004504-download\\derivatives\\sub-019\\eeg\\sub-019_task-eyesclosed_eeg.set"
+  },
+  "sub-020": {
+    "group": "AD",
+    "mmse": 4.0,
+    "age": 71.0,
+    "gender": "M",
+    "band_mean_dwell": {
+      "delta": 178.826895565093,
+      "theta": 137.81697905181917,
+      "alpha": 130.48016701461378,
+      "beta": 44.169611307420496,
+      "gamma": 47.54659566375047
+    },
+    "dwell_gradient": -0.3741673073120633,
+    "n_channels": 19,
+    "duration_s": 120.0,
+    "source_file": "E:\\DocsHouse\\575 45 degree angle is real in brain\\ds004504-download\\derivatives\\sub-020\\eeg\\sub-020_task-eyesclosed_eeg.set"
+  },
+  "sub-021": {
+    "group": "AD",
+    "mmse": 22.0,
+    "age": 79.0,
+    "gender": "M",
+    "band_mean_dwell": {
+      "delta": 185.459940652819,
+      "theta": 135.42795232936078,
+      "alpha": 128.46865364850976,
+      "beta": 53.21413367390379,
+      "gamma": 59.12961210974456
+    },
+    "dwell_gradient": -0.3186282983002311,
+    "n_channels": 19,
+    "duration_s": 120.0,
+    "source_file": "E:\\DocsHouse\\575 45 degree angle is real in brain\\ds004504-download\\derivatives\\sub-021\\eeg\\sub-021_task-eyesclosed_eeg.set"
+  },
+  "sub-022": {
+    "group": "AD",
+    "mmse": 20.0,
+    "age": 68.0,
+    "gender": "F",
+    "band_mean_dwell": {
+      "delta": 229.3577981651376,
+      "theta": 182.21574344023324,
+      "alpha": 186.01190476190476,
+      "beta": 54.20641803989592,
+      "gamma": 52.083333333333336
+    },
+    "dwell_gradient": -0.41351266461424246,
+    "n_channels": 19,
+    "duration_s": 120.0,
+    "source_file": "E:\\DocsHouse\\575 45 degree angle is real in brain\\ds004504-download\\derivatives\\sub-022\\eeg\\sub-022_task-eyesclosed_eeg.set"
+  },
+  "sub-023": {
+    "group": "AD",
+    "mmse": 16.0,
+    "age": 60.0,
+    "gender": "M",
+    "band_mean_dwell": {
+      "delta": 174.58100558659217,
+      "theta": 135.28138528138527,
+      "alpha": 155.4726368159204,
+      "beta": 55.604982206405694,
+      "gamma": 55.90339892665474
+    },
+    "dwell_gradient": -0.3132115616063007,
+    "n_channels": 19,
+    "duration_s": 120.0,
+    "source_file": "E:\\DocsHouse\\575 45 degree angle is real in brain\\ds004504-download\\derivatives\\sub-023\\eeg\\sub-023_task-eyesclosed_eeg.set"
+  },
+  "sub-024": {
+    "group": "AD",
+    "mmse": 20.0,
+    "age": 69.0,
+    "gender": "F",
+    "band_mean_dwell": {
+      "delta": 189.9696048632219,
+      "theta": 178.3166904422254,
+      "alpha": 154.7029702970297,
+      "beta": 57.18206770356816,
+      "gamma": 55.580257892396624
+    },
+    "dwell_gradient": -0.35584845800900455,
+    "n_channels": 19,
+    "duration_s": 120.0,
+    "source_file": "E:\\DocsHouse\\575 45 degree angle is real in brain\\ds004504-download\\derivatives\\sub-024\\eeg\\sub-024_task-eyesclosed_eeg.set"
+  },
+  "sub-025": {
+    "group": "AD",
+    "mmse": 20.0,
+    "age": 79.0,
+    "gender": "F",
+    "band_mean_dwell": {
+      "delta": 179.3400286944046,
+      "theta": 116.93171188026193,
+      "alpha": 333.3333333333333,
+      "beta": 50.382910116888354,
+      "gamma": 62.94058408862034
+    },
+    "dwell_gradient": -0.29045797921829103,
+    "n_channels": 19,
+    "duration_s": 120.0,
+    "source_file": "E:\\DocsHouse\\575 45 degree angle is real in brain\\ds004504-download\\derivatives\\sub-025\\eeg\\sub-025_task-eyesclosed_eeg.set"
+  },
+  "sub-026": {
+    "group": "AD",
+    "mmse": 18.0,
+    "age": 61.0,
+    "gender": "F",
+    "band_mean_dwell": {
+      "delta": 184.36578171091446,
+      "theta": 187.68768768768768,
+      "alpha": 121.83235867446393,
+      "beta": 51.124744376278116,
+      "gamma": 55.828494863778474
+    },
+    "dwell_gradient": -0.3651039828836857,
+    "n_channels": 19,
+    "duration_s": 120.0,
+    "source_file": "E:\\DocsHouse\\575 45 degree angle is real in brain\\ds004504-download\\derivatives\\sub-026\\eeg\\sub-026_task-eyesclosed_eeg.set"
+  },
+  "sub-027": {
+    "group": "AD",
+    "mmse": 16.0,
+    "age": 67.0,
+    "gender": "F",
+    "band_mean_dwell": {
+      "delta": 192.01228878648234,
+      "theta": 211.864406779661,
+      "alpha": 132.55567338282077,
+      "beta": 41.89008042895443,
+      "gamma": 42.00268817204301
+    },
+    "dwell_gradient": -0.4604997261303958,
+    "n_channels": 19,
+    "duration_s": 120.0,
+    "source_file": "E:\\DocsHouse\\575 45 degree angle is real in brain\\ds004504-download\\derivatives\\sub-027\\eeg\\sub-027_task-eyesclosed_eeg.set"
+  },
+  "sub-028": {
+    "group": "AD",
+    "mmse": 20.0,
+    "age": 49.0,
+    "gender": "M",
+    "band_mean_dwell": {
+      "delta": 184.36578171091446,
+      "theta": 185.1851851851852,
+      "alpha": 147.92899408284023,
+      "beta": 55.18763796909492,
+      "gamma": 51.73841059602649
+    },
+    "dwell_gradient": -0.3712019085056446,
+    "n_channels": 19,
+    "duration_s": 120.0,
+    "source_file": "E:\\DocsHouse\\575 45 degree angle is real in brain\\ds004504-download\\derivatives\\sub-028\\eeg\\sub-028_task-eyesclosed_eeg.set"
+  },
+  "sub-029": {
+    "group": "AD",
+    "mmse": 16.0,
+    "age": 53.0,
+    "gender": "F",
+    "band_mean_dwell": {
+      "delta": 192.01228878648234,
+      "theta": 192.90123456790124,
+      "alpha": 136.31406761177755,
+      "beta": 51.54639175257732,
+      "gamma": 58.71301080319399
+    },
+    "dwell_gradient": -0.36520603500075666,
+    "n_channels": 19,
+    "duration_s": 120.0,
+    "source_file": "E:\\DocsHouse\\575 45 degree angle is real in brain\\ds004504-download\\derivatives\\sub-029\\eeg\\sub-029_task-eyesclosed_eeg.set"
+  },
+  "sub-030": {
+    "group": "AD",
+    "mmse": 20.0,
+    "age": 56.0,
+    "gender": "F",
+    "band_mean_dwell": {
+      "delta": 285.38812785388126,
+      "theta": 176.05633802816902,
+      "alpha": 150.6024096385542,
+      "beta": 53.763440860215056,
+      "gamma": 59.72288580984233
+    },
+    "dwell_gradient": -0.4275499787607272,
+    "n_channels": 19,
+    "duration_s": 120.0,
+    "source_file": "E:\\DocsHouse\\575 45 degree angle is real in brain\\ds004504-download\\derivatives\\sub-030\\eeg\\sub-030_task-eyesclosed_eeg.set"
+  },
+  "sub-031": {
+    "group": "AD",
+    "mmse": 22.0,
+    "age": 67.0,
+    "gender": "F",
+    "band_mean_dwell": {
+      "delta": 187.9699248120301,
+      "theta": 148.63258026159335,
+      "alpha": 193.19938176197837,
+      "beta": 57.3394495412844,
+      "gamma": 50.77173030056864
+    },
+    "dwell_gradient": -0.3531391537729722,
+    "n_channels": 19,
+    "duration_s": 120.0,
+    "source_file": "E:\\DocsHouse\\575 45 degree angle is real in brain\\ds004504-download\\derivatives\\sub-031\\eeg\\sub-031_task-eyesclosed_eeg.set"
+  },
+  "sub-032": {
+    "group": "AD",
+    "mmse": 20.0,
+    "age": 59.0,
+    "gender": "F",
+    "band_mean_dwell": {
+      "delta": 173.37031900138697,
+      "theta": 171.23287671232876,
+      "alpha": 139.04338153503892,
+      "beta": 56.053811659192824,
+      "gamma": 47.5827940616673
+    },
+    "dwell_gradient": -0.36606763511808293,
+    "n_channels": 19,
+    "duration_s": 120.0,
+    "source_file": "E:\\DocsHouse\\575 45 degree angle is real in brain\\ds004504-download\\derivatives\\sub-032\\eeg\\sub-032_task-eyesclosed_eeg.set"
+  },
+  "sub-033": {
+    "group": "AD",
+    "mmse": 20.0,
+    "age": 72.0,
+    "gender": "F",
+    "band_mean_dwell": {
+      "delta": 179.0830945558739,
+      "theta": 134.12017167381975,
+      "alpha": 138.42746400885935,
+      "beta": 53.23679727427598,
+      "gamma": 56.71506352087114
+    },
+    "dwell_gradient": -0.31886052986989316,
+    "n_channels": 19,
+    "duration_s": 120.0,
+    "source_file": "E:\\DocsHouse\\575 45 degree angle is real in brain\\ds004504-download\\derivatives\\sub-033\\eeg\\sub-033_task-eyesclosed_eeg.set"
+  },
+  "sub-034": {
+    "group": "AD",
+    "mmse": 18.0,
+    "age": 75.0,
+    "gender": "F",
+    "band_mean_dwell": {
+      "delta": 173.61111111111111,
+      "theta": 145.6876456876457,
+      "alpha": 129.13223140495867,
+      "beta": 52.92125317527519,
+      "gamma": 50.689375506893754
+    },
+    "dwell_gradient": -0.34353988016265746,
+    "n_channels": 19,
+    "duration_s": 120.0,
+    "source_file": "E:\\DocsHouse\\575 45 degree angle is real in brain\\ds004504-download\\derivatives\\sub-034\\eeg\\sub-034_task-eyesclosed_eeg.set"
+  },
+  "sub-035": {
+    "group": "AD",
+    "mmse": 22.0,
+    "age": 57.0,
+    "gender": "F",
+    "band_mean_dwell": {
+      "delta": 201.93861066235866,
+      "theta": 143.02059496567506,
+      "alpha": 134.40860215053763,
+      "beta": 51.525144270403956,
+      "gamma": 59.58055290753098
+    },
+    "dwell_gradient": -0.34265234971574215,
+    "n_channels": 19,
+    "duration_s": 120.0,
+    "source_file": "E:\\DocsHouse\\575 45 degree angle is real in brain\\ds004504-download\\derivatives\\sub-035\\eeg\\sub-035_task-eyesclosed_eeg.set"
+  },
+  "sub-036": {
+    "group": "AD",
+    "mmse": 9.0,
+    "age": 58.0,
+    "gender": "F",
+    "band_mean_dwell": {
+      "delta": 182.7485380116959,
+      "theta": 145.01160092807424,
+      "alpha": 151.5151515151515,
+      "beta": 62.375249500998,
+      "gamma": 55.580257892396624
+    },
+    "dwell_gradient": -0.31904287937320863,
+    "n_channels": 19,
+    "duration_s": 120.0,
+    "source_file": "E:\\DocsHouse\\575 45 degree angle is real in brain\\ds004504-download\\derivatives\\sub-036\\eeg\\sub-036_task-eyesclosed_eeg.set"
+  },
+  "sub-037": {
+    "group": "CN",
+    "mmse": 30.0,
+    "age": 57.0,
+    "gender": "M",
+    "band_mean_dwell": {
+      "delta": 180.37518037518038,
+      "theta": 127.55102040816327,
+      "alpha": 461.2546125461255,
+      "beta": 63.41958396752917,
+      "gamma": 46.50297619047619
+    },
+    "dwell_gradient": -0.3370458865699127,
+    "n_channels": 19,
+    "duration_s": 120.0,
+    "source_file": "E:\\DocsHouse\\575 45 degree angle is real in brain\\ds004504-download\\derivatives\\sub-037\\eeg\\sub-037_task-eyesclosed_eeg.set"
+  },
+  "sub-038": {
+    "group": "CN",
+    "mmse": 30.0,
+    "age": 62.0,
+    "gender": "M",
+    "band_mean_dwell": {
+      "delta": 173.61111111111111,
+      "theta": 133.9764201500536,
+      "alpha": 143.02059496567506,
+      "beta": 60.5913717886573,
+      "gamma": 49.82064567556795
+    },
+    "dwell_gradient": -0.32530954971507253,
+    "n_channels": 19,
+    "duration_s": 120.0,
+    "source_file": "E:\\DocsHouse\\575 45 degree angle is real in brain\\ds004504-download\\derivatives\\sub-038\\eeg\\sub-038_task-eyesclosed_eeg.set"
+  },
+  "sub-039": {
+    "group": "CN",
+    "mmse": 30.0,
+    "age": 70.0,
+    "gender": "M",
+    "band_mean_dwell": {
+      "delta": 179.3400286944046,
+      "theta": 127.420998980632,
+      "alpha": 354.10764872521247,
+      "beta": 60.32818532818533,
+      "gamma": 51.41916906622789
+    },
+    "dwell_gradient": -0.3210217932554336,
+    "n_channels": 19,
+    "duration_s": 120.0,
+    "source_file": "E:\\DocsHouse\\575 45 degree angle is real in brain\\ds004504-download\\derivatives\\sub-039\\eeg\\sub-039_task-eyesclosed_eeg.set"
+  },
+  "sub-040": {
+    "group": "CN",
+    "mmse": 30.0,
+    "age": 61.0,
+    "gender": "M",
+    "band_mean_dwell": {
+      "delta": 185.459940652819,
+      "theta": 123.76237623762377,
+      "alpha": 213.31058020477815,
+      "beta": 49.98000799680128,
+      "gamma": 47.49240121580547
+    },
+    "dwell_gradient": -0.35885960039771003,
+    "n_channels": 19,
+    "duration_s": 120.0,
+    "source_file": "E:\\DocsHouse\\575 45 degree angle is real in brain\\ds004504-download\\derivatives\\sub-040\\eeg\\sub-040_task-eyesclosed_eeg.set"
+  },
+  "sub-041": {
+    "group": "CN",
+    "mmse": 30.0,
+    "age": 77.0,
+    "gender": "F",
+    "band_mean_dwell": {
+      "delta": 200.32051282051282,
+      "theta": 143.84349827387803,
+      "alpha": 146.37002341920376,
+      "beta": 59.12961210974456,
+      "gamma": 59.07372400756144
+    },
+    "dwell_gradient": -0.3297802778691912,
+    "n_channels": 19,
+    "duration_s": 120.0,
+    "source_file": "E:\\DocsHouse\\575 45 degree angle is real in brain\\ds004504-download\\derivatives\\sub-041\\eeg\\sub-041_task-eyesclosed_eeg.set"
+  },
+  "sub-042": {
+    "group": "CN",
+    "mmse": 30.0,
+    "age": 74.0,
+    "gender": "M",
+    "band_mean_dwell": {
+      "delta": 183.55359765051395,
+      "theta": 128.46865364850976,
+      "alpha": 183.01610541727672,
+      "beta": 61.12469437652812,
+      "gamma": 51.931865392604905
+    },
+    "dwell_gradient": -0.32321640213209824,
+    "n_channels": 19,
+    "duration_s": 120.0,
+    "source_file": "E:\\DocsHouse\\575 45 degree angle is real in brain\\ds004504-download\\derivatives\\sub-042\\eeg\\sub-042_task-eyesclosed_eeg.set"
+  },
+  "sub-043": {
+    "group": "CN",
+    "mmse": 30.0,
+    "age": 72.0,
+    "gender": "M",
+    "band_mean_dwell": {
+      "delta": 178.06267806267806,
+      "theta": 130.48016701461378,
+      "alpha": 132.1353065539112,
+      "beta": 47.98464491362764,
+      "gamma": 47.63719512195122
+    },
+    "dwell_gradient": -0.35940438019870136,
+    "n_channels": 19,
+    "duration_s": 120.0,
+    "source_file": "E:\\DocsHouse\\575 45 degree angle is real in brain\\ds004504-download\\derivatives\\sub-043\\eeg\\sub-043_task-eyesclosed_eeg.set"
+  },
+  "sub-044": {
+    "group": "CN",
+    "mmse": 30.0,
+    "age": 64.0,
+    "gender": "F",
+    "band_mean_dwell": {
+      "delta": 215.88946459412782,
+      "theta": 148.98688915375448,
+      "alpha": 239.9232245681382,
+      "beta": 68.94649751792609,
+      "gamma": 56.92167577413479
+    },
+    "dwell_gradient": -0.3403409583577105,
+    "n_channels": 19,
+    "duration_s": 120.0,
+    "source_file": "E:\\DocsHouse\\575 45 degree angle is real in brain\\ds004504-download\\derivatives\\sub-044\\eeg\\sub-044_task-eyesclosed_eeg.set"
+  },
+  "sub-045": {
+    "group": "CN",
+    "mmse": 30.0,
+    "age": 70.0,
+    "gender": "F",
+    "band_mean_dwell": {
+      "delta": 192.90123456790124,
+      "theta": 139.66480446927375,
+      "alpha": 124.0079365079365,
+      "beta": 50.93724531377343,
+      "gamma": 47.11647191858274
+    },
+    "dwell_gradient": -0.37837923365005066,
+    "n_channels": 19,
+    "duration_s": 120.0,
+    "source_file": "E:\\DocsHouse\\575 45 degree angle is real in brain\\ds004504-download\\derivatives\\sub-045\\eeg\\sub-045_task-eyesclosed_eeg.set"
+  },
+  "sub-046": {
+    "group": "CN",
+    "mmse": 30.0,
+    "age": 63.0,
+    "gender": "M",
+    "band_mean_dwell": {
+      "delta": 178.3166904422254,
+      "theta": 157.03517587939697,
+      "alpha": 231.4814814814815,
+      "beta": 61.576354679802954,
+      "gamma": 54.513737461840385
+    },
+    "dwell_gradient": -0.3271476056419941,
+    "n_channels": 19,
+    "duration_s": 120.0,
+    "source_file": "E:\\DocsHouse\\575 45 degree angle is real in brain\\ds004504-download\\derivatives\\sub-046\\eeg\\sub-046_task-eyesclosed_eeg.set"
+  },
+  "sub-047": {
+    "group": "CN",
+    "mmse": 30.0,
+    "age": 70.0,
+    "gender": "F",
+    "band_mean_dwell": {
+      "delta": 192.01228878648234,
+      "theta": 129.39958592132504,
+      "alpha": 222.41992882562278,
+      "beta": 67.56756756756756,
+      "gamma": 57.656826568265686
+    },
+    "dwell_gradient": -0.30248836190719885,
+    "n_channels": 19,
+    "duration_s": 120.0,
+    "source_file": "E:\\DocsHouse\\575 45 degree angle is real in brain\\ds004504-download\\derivatives\\sub-047\\eeg\\sub-047_task-eyesclosed_eeg.set"
+  },
+  "sub-048": {
+    "group": "CN",
+    "mmse": 30.0,
+    "age": 65.0,
+    "gender": "M",
+    "band_mean_dwell": {
+      "delta": 184.0942562592047,
+      "theta": 131.1647429171039,
+      "alpha": 257.201646090535,
+      "beta": 69.4058856191005,
+      "gamma": 59.4106463878327
+    },
+    "dwell_gradient": -0.2869172003638121,
+    "n_channels": 19,
+    "duration_s": 120.0,
+    "source_file": "E:\\DocsHouse\\575 45 degree angle is real in brain\\ds004504-download\\derivatives\\sub-048\\eeg\\sub-048_task-eyesclosed_eeg.set"
+  },
+  "sub-049": {
+    "group": "CN",
+    "mmse": 30.0,
+    "age": 62.0,
+    "gender": "F",
+    "band_mean_dwell": {
+      "delta": 201.93861066235866,
+      "theta": 138.12154696132598,
+      "alpha": 310.9452736318408,
+      "beta": 63.25910931174089,
+      "gamma": 55.18763796909492
+    },
+    "dwell_gradient": -0.3340838006776367,
+    "n_channels": 19,
+    "duration_s": 120.0,
+    "source_file": "E:\\DocsHouse\\575 45 degree angle is real in brain\\ds004504-download\\derivatives\\sub-049\\eeg\\sub-049_task-eyesclosed_eeg.set"
+  },
+  "sub-050": {
+    "group": "CN",
+    "mmse": 30.0,
+    "age": 68.0,
+    "gender": "M",
+    "band_mean_dwell": {
+      "delta": 186.84603886397608,
+      "theta": 126.26262626262626,
+      "alpha": 190.5487804878049,
+      "beta": 47.91107704101188,
+      "gamma": 47.18761796904492
+    },
+    "dwell_gradient": -0.3677290150701296,
+    "n_channels": 19,
+    "duration_s": 120.0,
+    "source_file": "E:\\DocsHouse\\575 45 degree angle is real in brain\\ds004504-download\\derivatives\\sub-050\\eeg\\sub-050_task-eyesclosed_eeg.set"
+  },
+  "sub-051": {
+    "group": "CN",
+    "mmse": 30.0,
+    "age": 75.0,
+    "gender": "F",
+    "band_mean_dwell": {
+      "delta": 192.6040061633282,
+      "theta": 127.29124236252545,
+      "alpha": 222.81639928698752,
+      "beta": 54.94505494505494,
+      "gamma": 55.80357142857143
+    },
+    "dwell_gradient": -0.3282364296059319,
+    "n_channels": 19,
+    "duration_s": 120.0,
+    "source_file": "E:\\DocsHouse\\575 45 degree angle is real in brain\\ds004504-download\\derivatives\\sub-051\\eeg\\sub-051_task-eyesclosed_eeg.set"
+  },
+  "sub-052": {
+    "group": "CN",
+    "mmse": 30.0,
+    "age": 73.0,
+    "gender": "F",
+    "band_mean_dwell": {
+      "delta": 199.68051118210863,
+      "theta": 133.9764201500536,
+      "alpha": 231.9109461966605,
+      "beta": 58.65790708587517,
+      "gamma": 52.083333333333336
+    },
+    "dwell_gradient": -0.34761756820059536,
+    "n_channels": 19,
+    "duration_s": 120.0,
+    "source_file": "E:\\DocsHouse\\575 45 degree angle is real in brain\\ds004504-download\\derivatives\\sub-052\\eeg\\sub-052_task-eyesclosed_eeg.set"
+  },
+  "sub-053": {
+    "group": "CN",
+    "mmse": 30.0,
+    "age": 70.0,
+    "gender": "M",
+    "band_mean_dwell": {
+      "delta": 187.125748502994,
+      "theta": 126.13521695257316,
+      "alpha": 216.26297577854672,
+      "beta": 55.53087516659262,
+      "gamma": 58.13953488372093
+    },
+    "dwell_gradient": -0.31248861974999775,
+    "n_channels": 19,
+    "duration_s": 120.0,
+    "source_file": "E:\\DocsHouse\\575 45 degree angle is real in brain\\ds004504-download\\derivatives\\sub-053\\eeg\\sub-053_task-eyesclosed_eeg.set"
+  },
+  "sub-054": {
+    "group": "CN",
+    "mmse": 30.0,
+    "age": 78.0,
+    "gender": "M",
+    "band_mean_dwell": {
+      "delta": 170.29972752043597,
+      "theta": 122.54901960784314,
+      "alpha": 322.99741602067184,
+      "beta": 59.95203836930455,
+      "gamma": 50.97879282218597
+    },
+    "dwell_gradient": -0.30917087177833924,
+    "n_channels": 19,
+    "duration_s": 120.0,
+    "source_file": "E:\\DocsHouse\\575 45 degree angle is real in brain\\ds004504-download\\derivatives\\sub-054\\eeg\\sub-054_task-eyesclosed_eeg.set"
+  },
+  "sub-055": {
+    "group": "CN",
+    "mmse": 30.0,
+    "age": 67.0,
+    "gender": "M",
+    "band_mean_dwell": {
+      "delta": 183.01610541727672,
+      "theta": 141.40271493212668,
+      "alpha": 135.42795232936078,
+      "beta": 59.58055290753098,
+      "gamma": 55.97850425436632
+    },
+    "dwell_gradient": -0.31993835415887295,
+    "n_channels": 19,
+    "duration_s": 120.0,
+    "source_file": "E:\\DocsHouse\\575 45 degree angle is real in brain\\ds004504-download\\derivatives\\sub-055\\eeg\\sub-055_task-eyesclosed_eeg.set"
+  },
+  "sub-056": {
+    "group": "CN",
+    "mmse": 30.0,
+    "age": 64.0,
+    "gender": "F",
+    "band_mean_dwell": {
+      "delta": 176.05633802816902,
+      "theta": 118.25922421948913,
+      "alpha": 288.6836027713626,
+      "beta": 59.83724269985639,
+      "gamma": 51.08295872496935
+    },
+    "dwell_gradient": -0.3120357669736577,
+    "n_channels": 19,
+    "duration_s": 120.0,
+    "source_file": "E:\\DocsHouse\\575 45 degree angle is real in brain\\ds004504-download\\derivatives\\sub-056\\eeg\\sub-056_task-eyesclosed_eeg.set"
+  },
+  "sub-057": {
+    "group": "CN",
+    "mmse": 30.0,
+    "age": 64.0,
+    "gender": "M",
+    "band_mean_dwell": {
+      "delta": 187.68768768768768,
+      "theta": 143.51320321469575,
+      "alpha": 238.54961832061068,
+      "beta": 68.45564074479738,
+      "gamma": 54.0891389009087
+    },
+    "dwell_gradient": -0.3194963832126345,
+    "n_channels": 19,
+    "duration_s": 120.0,
+    "source_file": "E:\\DocsHouse\\575 45 degree angle is real in brain\\ds004504-download\\derivatives\\sub-057\\eeg\\sub-057_task-eyesclosed_eeg.set"
+  },
+  "sub-058": {
+    "group": "CN",
+    "mmse": 30.0,
+    "age": 62.0,
+    "gender": "M",
+    "band_mean_dwell": {
+      "delta": 199.36204146730464,
+      "theta": 117.59172154280338,
+      "alpha": 310.9452736318408,
+      "beta": 68.53070175438596,
+      "gamma": 59.80861244019139
+    },
+    "dwell_gradient": -0.29187072887776894,
+    "n_channels": 19,
+    "duration_s": 120.0,
+    "source_file": "E:\\DocsHouse\\575 45 degree angle is real in brain\\ds004504-download\\derivatives\\sub-058\\eeg\\sub-058_task-eyesclosed_eeg.set"
+  },
+  "sub-059": {
+    "group": "CN",
+    "mmse": 30.0,
+    "age": 77.0,
+    "gender": "M",
+    "band_mean_dwell": {
+      "delta": 193.7984496124031,
+      "theta": 134.8435814455232,
+      "alpha": 146.19883040935673,
+      "beta": 51.65289256198347,
+      "gamma": 55.16328331862312
+    },
+    "dwell_gradient": -0.34351873321696,
+    "n_channels": 19,
+    "duration_s": 120.0,
+    "source_file": "E:\\DocsHouse\\575 45 degree angle is real in brain\\ds004504-download\\derivatives\\sub-059\\eeg\\sub-059_task-eyesclosed_eeg.set"
+  },
+  "sub-060": {
+    "group": "CN",
+    "mmse": 30.0,
+    "age": 71.0,
+    "gender": "F",
+    "band_mean_dwell": {
+      "delta": 195.92476489028212,
+      "theta": 139.04338153503892,
+      "alpha": 116.0631383472609,
+      "beta": 59.01794145420208,
+      "gamma": 52.9436679373147
+    },
+    "dwell_gradient": -0.34370715728838175,
+    "n_channels": 19,
+    "duration_s": 120.0,
+    "source_file": "E:\\DocsHouse\\575 45 degree angle is real in brain\\ds004504-download\\derivatives\\sub-060\\eeg\\sub-060_task-eyesclosed_eeg.set"
+  },
+  "sub-061": {
+    "group": "CN",
+    "mmse": 30.0,
+    "age": 63.0,
+    "gender": "F",
+    "band_mean_dwell": {
+      "delta": 222.81639928698752,
+      "theta": 151.3317191283293,
+      "alpha": 168.23687752355318,
+      "beta": 53.14625850340136,
+      "gamma": 60.35731530661516
+    },
+    "dwell_gradient": -0.3622594963164073,
+    "n_channels": 19,
+    "duration_s": 120.0,
+    "source_file": "E:\\DocsHouse\\575 45 degree angle is real in brain\\ds004504-download\\derivatives\\sub-061\\eeg\\sub-061_task-eyesclosed_eeg.set"
+  },
+  "sub-062": {
+    "group": "CN",
+    "mmse": 30.0,
+    "age": 67.0,
+    "gender": "M",
+    "band_mean_dwell": {
+      "delta": 176.8033946251768,
+      "theta": 115.95547309833024,
+      "alpha": 468.1647940074906,
+      "beta": 66.84491978609626,
+      "gamma": 69.8714365567356
+    },
+    "dwell_gradient": -0.23841906459723444,
+    "n_channels": 19,
+    "duration_s": 120.0,
+    "source_file": "E:\\DocsHouse\\575 45 degree angle is real in brain\\ds004504-download\\derivatives\\sub-062\\eeg\\sub-062_task-eyesclosed_eeg.set"
+  },
+  "sub-063": {
+    "group": "CN",
+    "mmse": 30.0,
+    "age": 66.0,
+    "gender": "M",
+    "band_mean_dwell": {
+      "delta": 190.5487804878049,
+      "theta": 138.73473917869035,
+      "alpha": 178.57142857142858,
+      "beta": 62.34413965087282,
+      "gamma": 54.4188071397475
+    },
+    "dwell_gradient": -0.3271610488957903,
+    "n_channels": 19,
+    "duration_s": 120.0,
+    "source_file": "E:\\DocsHouse\\575 45 degree angle is real in brain\\ds004504-download\\derivatives\\sub-063\\eeg\\sub-063_task-eyesclosed_eeg.set"
+  },
+  "sub-064": {
+    "group": "CN",
+    "mmse": 30.0,
+    "age": 66.0,
+    "gender": "M",
+    "band_mean_dwell": {
+      "delta": 199.68051118210863,
+      "theta": 125.25050100200401,
+      "alpha": 332.4468085106383,
+      "beta": 78.96399241945673,
+      "gamma": 58.99008966493629
+    },
+    "dwell_gradient": -0.28717611389544606,
+    "n_channels": 19,
+    "duration_s": 120.0,
+    "source_file": "E:\\DocsHouse\\575 45 degree angle is real in brain\\ds004504-download\\derivatives\\sub-064\\eeg\\sub-064_task-eyesclosed_eeg.set"
+  },
+  "sub-065": {
+    "group": "CN",
+    "mmse": 30.0,
+    "age": 71.0,
+    "gender": "F",
+    "band_mean_dwell": {
+      "delta": 192.6040061633282,
+      "theta": 130.07284079084286,
+      "alpha": 139.82102908277406,
+      "beta": 48.562548562548564,
+      "gamma": 50.505050505050505
+    },
+    "dwell_gradient": -0.362078771942282,
+    "n_channels": 19,
+    "duration_s": 120.0,
+    "source_file": "E:\\DocsHouse\\575 45 degree angle is real in brain\\ds004504-download\\derivatives\\sub-065\\eeg\\sub-065_task-eyesclosed_eeg.set"
+  },
+  "sub-066": {
+    "group": "FTD",
+    "mmse": 20.0,
+    "age": 73.0,
+    "gender": "M",
+    "band_mean_dwell": {
+      "delta": 242.24806201550388,
+      "theta": 174.58100558659217,
+      "alpha": 186.01190476190476,
+      "beta": 54.96921723834652,
+      "gamma": 54.1829215431296
+    },
+    "dwell_gradient": -0.41101551411011183,
+    "n_channels": 19,
+    "duration_s": 120.0,
+    "source_file": "E:\\DocsHouse\\575 45 degree angle is real in brain\\ds004504-download\\derivatives\\sub-066\\eeg\\sub-066_task-eyesclosed_eeg.set"
+  },
+  "sub-067": {
+    "group": "FTD",
+    "mmse": 24.0,
+    "age": 66.0,
+    "gender": "M",
+    "band_mean_dwell": {
+      "delta": 178.57142857142858,
+      "theta": 122.78978388998036,
+      "alpha": 109.74539069359086,
+      "beta": 48.54368932038835,
+      "gamma": 46.04051565377532
+    },
+    "dwell_gradient": -0.35948575308827757,
+    "n_channels": 19,
+    "duration_s": 120.0,
+    "source_file": "E:\\DocsHouse\\575 45 degree angle is real in brain\\ds004504-download\\derivatives\\sub-067\\eeg\\sub-067_task-eyesclosed_eeg.set"
+  },
+  "sub-068": {
+    "group": "FTD",
+    "mmse": 25.0,
+    "age": 78.0,
+    "gender": "M",
+    "band_mean_dwell": {
+      "delta": 175.07002801120447,
+      "theta": 119.9616122840691,
+      "alpha": 164.69038208168644,
+      "beta": 50.220972278023304,
+      "gamma": 50.484652665589664
+    },
+    "dwell_gradient": -0.3318520269561279,
+    "n_channels": 19,
+    "duration_s": 120.0,
+    "source_file": "E:\\DocsHouse\\575 45 degree angle is real in brain\\ds004504-download\\derivatives\\sub-068\\eeg\\sub-068_task-eyesclosed_eeg.set"
+  },
+  "sub-069": {
+    "group": "FTD",
+    "mmse": 22.0,
+    "age": 70.0,
+    "gender": "M",
+    "band_mean_dwell": {
+      "delta": 218.1500872600349,
+      "theta": 199.36204146730464,
+      "alpha": 222.81639928698752,
+      "beta": 56.00358422939068,
+      "gamma": 52.21386800334169
+    },
+    "dwell_gradient": -0.4087887362174458,
+    "n_channels": 19,
+    "duration_s": 120.0,
+    "source_file": "E:\\DocsHouse\\575 45 degree angle is real in brain\\ds004504-download\\derivatives\\sub-069\\eeg\\sub-069_task-eyesclosed_eeg.set"
+  },
+  "sub-070": {
+    "group": "FTD",
+    "mmse": 22.0,
+    "age": 67.0,
+    "gender": "F",
+    "band_mean_dwell": {
+      "delta": 187.9699248120301,
+      "theta": 124.5019920318725,
+      "alpha": 127.55102040816327,
+      "beta": 46.53760238272524,
+      "gamma": 48.694974678613164
+    },
+    "dwell_gradient": -0.36421687233019145,
+    "n_channels": 19,
+    "duration_s": 120.0,
+    "source_file": "E:\\DocsHouse\\575 45 degree angle is real in brain\\ds004504-download\\derivatives\\sub-070\\eeg\\sub-070_task-eyesclosed_eeg.set"
+  },
+  "sub-071": {
+    "group": "FTD",
+    "mmse": 20.0,
+    "age": 62.0,
+    "gender": "M",
+    "band_mean_dwell": {
+      "delta": 194.09937888198758,
+      "theta": 137.5137513751375,
+      "alpha": 213.67521367521368,
+      "beta": 58.5480093676815,
+      "gamma": 49.368088467614534
+    },
+    "dwell_gradient": -0.3552489250913154,
+    "n_channels": 19,
+    "duration_s": 120.0,
+    "source_file": "E:\\DocsHouse\\575 45 degree angle is real in brain\\ds004504-download\\derivatives\\sub-071\\eeg\\sub-071_task-eyesclosed_eeg.set"
+  },
+  "sub-072": {
+    "group": "FTD",
+    "mmse": 18.0,
+    "age": 65.0,
+    "gender": "M",
+    "band_mean_dwell": {
+      "delta": 239.0057361376673,
+      "theta": 182.4817518248175,
+      "alpha": 138.42746400885935,
+      "beta": 61.00536847242557,
+      "gamma": 53.23679727427598
+    },
+    "dwell_gradient": -0.4059500705980564,
+    "n_channels": 19,
+    "duration_s": 120.0,
+    "source_file": "E:\\DocsHouse\\575 45 degree angle is real in brain\\ds004504-download\\derivatives\\sub-072\\eeg\\sub-072_task-eyesclosed_eeg.set"
+  },
+  "sub-073": {
+    "group": "FTD",
+    "mmse": 22.0,
+    "age": 57.0,
+    "gender": "F",
+    "band_mean_dwell": {
+      "delta": 176.05633802816902,
+      "theta": 126.00806451612904,
+      "alpha": 182.7485380116959,
+      "beta": 48.206710374084075,
+      "gamma": 47.70992366412214
+    },
+    "dwell_gradient": -0.35293909710669985,
+    "n_channels": 19,
+    "duration_s": 120.0,
+    "source_file": "E:\\DocsHouse\\575 45 degree angle is real in brain\\ds004504-download\\derivatives\\sub-073\\eeg\\sub-073_task-eyesclosed_eeg.set"
+  },
+  "sub-074": {
+    "group": "FTD",
+    "mmse": 20.0,
+    "age": 53.0,
+    "gender": "F",
+    "band_mean_dwell": {
+      "delta": 174.09470752089138,
+      "theta": 132.1353065539112,
+      "alpha": 181.15942028985506,
+      "beta": 52.96610169491525,
+      "gamma": 52.78716216216216
+    },
+    "dwell_gradient": -0.326359424292562,
+    "n_channels": 19,
+    "duration_s": 120.0,
+    "source_file": "E:\\DocsHouse\\575 45 degree angle is real in brain\\ds004504-download\\derivatives\\sub-074\\eeg\\sub-074_task-eyesclosed_eeg.set"
+  },
+  "sub-075": {
+    "group": "FTD",
+    "mmse": 22.0,
+    "age": 71.0,
+    "gender": "F",
+    "band_mean_dwell": {
+      "delta": 162.97262059973923,
+      "theta": 143.84349827387803,
+      "alpha": 162.33766233766235,
+      "beta": 51.69561621174525,
+      "gamma": 52.69814502529511
+    },
+    "dwell_gradient": -0.3243763586427738,
+    "n_channels": 19,
+    "duration_s": 120.0,
+    "source_file": "E:\\DocsHouse\\575 45 degree angle is real in brain\\ds004504-download\\derivatives\\sub-075\\eeg\\sub-075_task-eyesclosed_eeg.set"
+  },
+  "sub-076": {
+    "group": "FTD",
+    "mmse": 24.0,
+    "age": 44.0,
+    "gender": "M",
+    "band_mean_dwell": {
+      "delta": 192.90123456790124,
+      "theta": 132.41525423728814,
+      "alpha": 120.54001928640308,
+      "beta": 60.24096385542169,
+      "gamma": 82.1827744904668
+    },
+    "dwell_gradient": -0.24712674473878807,
+    "n_channels": 19,
+    "duration_s": 120.0,
+    "source_file": "E:\\DocsHouse\\575 45 degree angle is real in brain\\ds004504-download\\derivatives\\sub-076\\eeg\\sub-076_task-eyesclosed_eeg.set"
+  },
+  "sub-077": {
+    "group": "FTD",
+    "mmse": 22.0,
+    "age": 61.0,
+    "gender": "M",
+    "band_mean_dwell": {
+      "delta": 201.61290322580646,
+      "theta": 138.5809312638581,
+      "alpha": 129.80269989615783,
+      "beta": 46.3821892393321,
+      "gamma": 56.81818181818182
+    },
+    "dwell_gradient": -0.3588386156678947,
+    "n_channels": 19,
+    "duration_s": 120.0,
+    "source_file": "E:\\DocsHouse\\575 45 degree angle is real in brain\\ds004504-download\\derivatives\\sub-077\\eeg\\sub-077_task-eyesclosed_eeg.set"
+  },
+  "sub-078": {
+    "group": "FTD",
+    "mmse": 22.0,
+    "age": 62.0,
+    "gender": "M",
+    "band_mean_dwell": {
+      "delta": 178.826895565093,
+      "theta": 143.67816091954023,
+      "alpha": 120.77294685990339,
+      "beta": 49.761146496815286,
+      "gamma": 46.125461254612546
+    },
+    "dwell_gradient": -0.37257429929198016,
+    "n_channels": 19,
+    "duration_s": 120.0,
+    "source_file": "E:\\DocsHouse\\575 45 degree angle is real in brain\\ds004504-download\\derivatives\\sub-078\\eeg\\sub-078_task-eyesclosed_eeg.set"
+  },
+  "sub-079": {
+    "group": "FTD",
+    "mmse": 18.0,
+    "age": 60.0,
+    "gender": "F",
+    "band_mean_dwell": {
+      "delta": 208.33333333333334,
+      "theta": 138.5809312638581,
+      "alpha": 207.64119601328903,
+      "beta": 50.6482982171799,
+      "gamma": 51.61023947151115
+    },
+    "dwell_gradient": -0.37562215592903636,
+    "n_channels": 19,
+    "duration_s": 120.0,
+    "source_file": "E:\\DocsHouse\\575 45 degree angle is real in brain\\ds004504-download\\derivatives\\sub-079\\eeg\\sub-079_task-eyesclosed_eeg.set"
+  },
+  "sub-080": {
+    "group": "FTD",
+    "mmse": 20.0,
+    "age": 71.0,
+    "gender": "F",
+    "band_mean_dwell": {
+      "delta": 168.01075268817203,
+      "theta": 124.62612163509472,
+      "alpha": 609.7560975609756,
+      "beta": 71.02272727272727,
+      "gamma": 54.34782608695652
+    },
+    "dwell_gradient": -0.27889783927286,
+    "n_channels": 19,
+    "duration_s": 120.0,
+    "source_file": "E:\\DocsHouse\\575 45 degree angle is real in brain\\ds004504-download\\derivatives\\sub-080\\eeg\\sub-080_task-eyesclosed_eeg.set"
+  },
+  "sub-081": {
+    "group": "FTD",
+    "mmse": 18.0,
+    "age": 61.0,
+    "gender": "F",
+    "band_mean_dwell": {
+      "delta": 185.73551263001485,
+      "theta": 142.36902050113895,
+      "alpha": 163.18537859007833,
+      "beta": 50.77173030056864,
+      "gamma": 50.52546483427648
+    },
+    "dwell_gradient": -0.35938118089928206,
+    "n_channels": 19,
+    "duration_s": 120.0,
+    "source_file": "E:\\DocsHouse\\575 45 degree angle is real in brain\\ds004504-download\\derivatives\\sub-081\\eeg\\sub-081_task-eyesclosed_eeg.set"
+  },
+  "sub-082": {
+    "group": "FTD",
+    "mmse": 27.0,
+    "age": 63.0,
+    "gender": "M",
+    "band_mean_dwell": {
+      "delta": 179.0830945558739,
+      "theta": 124.2544731610338,
+      "alpha": 218.1500872600349,
+      "beta": 53.487376979032945,
+      "gamma": 45.42151162790697
+    },
+    "dwell_gradient": -0.35436892260550323,
+    "n_channels": 19,
+    "duration_s": 120.0,
+    "source_file": "E:\\DocsHouse\\575 45 degree angle is real in brain\\ds004504-download\\derivatives\\sub-082\\eeg\\sub-082_task-eyesclosed_eeg.set"
+  },
+  "sub-083": {
+    "group": "FTD",
+    "mmse": 20.0,
+    "age": 68.0,
+    "gender": "F",
+    "band_mean_dwell": {
+      "delta": 170.29972752043597,
+      "theta": 125.50200803212851,
+      "alpha": 115.42012927054478,
+      "beta": 49.426650850138394,
+      "gamma": 55.85344057193923
+    },
+    "dwell_gradient": -0.31256145120485374,
+    "n_channels": 19,
+    "duration_s": 120.0,
+    "source_file": "E:\\DocsHouse\\575 45 degree angle is real in brain\\ds004504-download\\derivatives\\sub-083\\eeg\\sub-083_task-eyesclosed_eeg.set"
+  },
+  "sub-084": {
+    "group": "FTD",
+    "mmse": 24.0,
+    "age": 71.0,
+    "gender": "F",
+    "band_mean_dwell": {
+      "delta": 183.28445747800586,
+      "theta": 172.89073305670817,
+      "alpha": 124.0079365079365,
+      "beta": 52.38893545683152,
+      "gamma": 52.988554472234
+    },
+    "dwell_gradient": -0.3636240524724534,
+    "n_channels": 19,
+    "duration_s": 120.0,
+    "source_file": "E:\\DocsHouse\\575 45 degree angle is real in brain\\ds004504-download\\derivatives\\sub-084\\eeg\\sub-084_task-eyesclosed_eeg.set"
+  },
+  "sub-085": {
+    "group": "FTD",
+    "mmse": 26.0,
+    "age": 64.0,
+    "gender": "M",
+    "band_mean_dwell": {
+      "delta": 197.1608832807571,
+      "theta": 194.70404984423675,
+      "alpha": 109.07504363001745,
+      "beta": 48.05843906189927,
+      "gamma": 54.68066491688539
+    },
+    "dwell_gradient": -0.392248391667691,
+    "n_channels": 19,
+    "duration_s": 120.0,
+    "source_file": "E:\\DocsHouse\\575 45 degree angle is real in brain\\ds004504-download\\derivatives\\sub-085\\eeg\\sub-085_task-eyesclosed_eeg.set"
+  },
+  "sub-086": {
+    "group": "FTD",
+    "mmse": 26.0,
+    "age": 49.0,
+    "gender": "M",
+    "band_mean_dwell": {
+      "delta": 222.41992882562278,
+      "theta": 131.1647429171039,
+      "alpha": 150.06002400960384,
+      "beta": 44.642857142857146,
+      "gamma": 45.289855072463766
+    },
+    "dwell_gradient": -0.4211462602851066,
+    "n_channels": 19,
+    "duration_s": 120.0,
+    "source_file": "E:\\DocsHouse\\575 45 degree angle is real in brain\\ds004504-download\\derivatives\\sub-086\\eeg\\sub-086_task-eyesclosed_eeg.set"
+  },
+  "sub-087": {
+    "group": "FTD",
+    "mmse": 24.0,
+    "age": 73.0,
+    "gender": "M",
+    "band_mean_dwell": {
+      "delta": 188.25301204819277,
+      "theta": 148.63258026159335,
+      "alpha": 157.43073047858942,
+      "beta": 54.39512619669278,
+      "gamma": 49.58349861166204
+    },
+    "dwell_gradient": -0.36326100076097534,
+    "n_channels": 19,
+    "duration_s": 120.0,
+    "source_file": "E:\\DocsHouse\\575 45 degree angle is real in brain\\ds004504-download\\derivatives\\sub-087\\eeg\\sub-087_task-eyesclosed_eeg.set"
+  },
+  "sub-088": {
+    "group": "FTD",
+    "mmse": 24.0,
+    "age": 55.0,
+    "gender": "M",
+    "band_mean_dwell": {
+      "delta": 177.05382436260624,
+      "theta": 176.30465444287728,
+      "alpha": 211.50592216582064,
+      "beta": 65.13809275664408,
+      "gamma": 55.604982206405694
+    },
+    "dwell_gradient": -0.32781023587679414,
+    "n_channels": 19,
+    "duration_s": 120.0,
+    "source_file": "E:\\DocsHouse\\575 45 degree angle is real in brain\\ds004504-download\\derivatives\\sub-088\\eeg\\sub-088_task-eyesclosed_eeg.set"
+  }
+}

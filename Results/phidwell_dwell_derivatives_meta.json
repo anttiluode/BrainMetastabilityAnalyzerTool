@@ -1,0 +1,9 @@
+{
+  "status": "ROBUSTNESS_RECOMPUTE_NOT_EXTERNAL_VALIDATION",
+  "use_derivatives": true,
+  "max_duration_s": 120,
+  "n_ok": 88,
+  "n_failed": 0,
+  "failures": [],
+  "feature": "frozen dwell_gradient from unchanged historical spatial-phase/dwell transform"
+}
