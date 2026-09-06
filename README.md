@@ -1,6 +1,6 @@
 # Brain Metastability Analyzer Tool
 
-> **2026 reality-audit reset:** this repository contains a real EEG state-space idea, but the Alzheimer's claims remain exploratory and are **not** a validated diagnostic tool.
+> **2026 reality-audit reset:** this repository contains a real EEG state-space idea, but the historical Alzheimer's claims are exploratory and are **not** a validated diagnostic tool.
 
 Live audit page: **https://anttiluode.github.io/BrainMetastabilityAnalyzerTool/**
 
@@ -27,7 +27,7 @@ The older repository used terms such as *holographic brain*, *criticality*, *gra
 - graph-Laplacian projection of multichannel EEG phase onto spatial sensor-layout modes;
 - per-band dominant-mode dwell times and transition statistics;
 - multi-band state words as an exploratory discretization;
-- the already-discovered **dwell gradient** as one candidate worth a frozen independent replication.
+- the already-discovered **dwell gradient** as a frozen candidate for independent replication.
 
 **Repair / quarantine:**
 
@@ -38,7 +38,7 @@ The older repository used terms such as *holographic brain*, *criticality*, *gra
 - PSI / Gerchberg–Saxton remains an unvalidated exploratory transform;
 - the legacy age parser reads lowercase `age` even though ds004504 uses `Age`.
 
-## Strongest candidate: dwell gradient
+## Frozen dwell gradient
 
 The later `brain_viscosity.py` branch contains a simple feature that does not need the viscosity story:
 
@@ -46,13 +46,11 @@ The later `brain_viscosity.py` branch contains a simple feature that does not ne
 g = \operatorname{slope}\left[\log(1+D_\delta),\log(1+D_\theta),\log(1+D_\alpha),\log(1+D_\beta),\log(1+D_\gamma)\right].
 \]
 
-Historical discovery on OpenNeuro `ds004504` reported AD/CN separation around `p ≈ 0.0003` and a pooled MMSE association around `rho ≈ 0.408`. Those were discovery statistics from the same cohort on which the feature was developed.
+Historical discovery on OpenNeuro `ds004504` reported strong-looking AD/CN separation and a pooled MMSE association. Those were discovery statistics from the same cohort on which the feature was developed.
 
-## 2026 internal spectral-slowing audit
+## 2026 internal audit: raw-style EEG
 
-The audit was written before its output was inspected. It processed all **88 subjects with zero failures** and compared the frozen dwell gradient with ordinary spectral slowing.
-
-### AD versus controls
+The preregistered-style internal audit processed all **88 subjects with zero failures** and compared the frozen dwell gradient with ordinary spectral slowing.
 
 | Feature | AD mean | CN mean | p |
 |---|---:|---:|---:|
@@ -61,20 +59,7 @@ The audit was written before its output was inspected. It processed all **88 sub
 | theta / alpha ratio | 2.6013 | 1.8297 | 0.000993 |
 | peak alpha frequency | 7.479 Hz | 8.664 Hz | 0.000124 |
 
-So ordinary spectral slowing is plainly present. Peak alpha frequency is at least as striking a simple group marker as dwell gradient in this cohort.
-
-### Severity check
-
-The pooled MMSE result did **not** become a within-disease severity result:
-
-```text
-within AD:  dwell_gradient vs MMSE  rho = 0.215, p = 0.207
-within FTD: dwell_gradient vs MMSE  rho = 0.121, p = 0.582
-```
-
-That strongly suggests the historical pooled MMSE correlation was substantially driven by diagnostic-group separation.
-
-### Internal subject-wise cross-validation
+Internal subject-wise CV:
 
 ```text
 A = age + spectral                       AUC = 0.729 ± 0.142
@@ -84,36 +69,76 @@ C = age + spectral + dwell_gradient      AUC = 0.768 ± 0.128
 C - A = +0.039 AUC
 ```
 
-This is interesting, but it is **not external validation**. Dwell gradient was invented after looking at the same ds004504 cohort, so cross-validation cannot erase feature-selection history. The +0.039 increment is a reason to perform the frozen external test, not a validated effect size.
+That looked interesting, but it still reused the discovery cohort and therefore could not validate the feature.
 
-Full receipt: [`INTERNAL_SPECTRAL_AUDIT_RESULT_2026.md`](INTERNAL_SPECTRAL_AUDIT_RESULT_2026.md) and [`Results/phidwell_spectral_audit.json`](Results/phidwell_spectral_audit.json).
+Full raw-style receipt: [`INTERNAL_SPECTRAL_AUDIT_RESULT_2026.md`](INTERNAL_SPECTRAL_AUDIT_RESULT_2026.md).
 
-## Age warning
+## 2026 internal audit: cleaned / derivative EEG
 
-With age parsed correctly, dwell gradient showed:
+The same frozen dwell transform was then recomputed on the dataset's derivative / cleaned EEG. Again, all **88 subjects** completed.
 
-```text
-within AD: rho = +0.142, p = 0.409
-within CN: rho = -0.599, p = 0.000597
-```
+| Feature | AD mean | CN mean | p |
+|---|---:|---:|---:|
+| dwell gradient | -0.3551 | -0.3275 | 0.006175 |
+| alpha relative power | 0.0494 | 0.0794 | 0.002351 |
+| theta / alpha ratio | 2.5318 | 1.6045 | 0.0000732 |
+| peak alpha frequency | 7.493 Hz | 8.681 Hz | 0.000155 |
 
-The strong control-group age association is a real warning. External evaluation must preserve age handling and should report age balance / age-matched sensitivity.
-
-## The boring competitor: spectral slowing
-
-Any Alzheimer's EEG feature has to add something beyond well-known slowing of EEG frequency content. The frozen baseline is:
+So the univariate dwell difference **survives cleaning**, but its apparent incremental value does not:
 
 ```text
-alpha_relative_power = P(8-13 Hz) / P(1-45 Hz)
-theta_alpha_ratio    = P(4-8 Hz) / P(8-13 Hz)
-peak_alpha_frequency = PSD peak in 7-13 Hz
+A = age + spectral                       AUC = 0.778 ± 0.121
+B = age + dwell_gradient                 AUC = 0.694 ± 0.128
+C = age + spectral + dwell_gradient      AUC = 0.777 ± 0.118
+
+C - A = -0.001 AUC
 ```
 
-The important question is now:
+Internal classification:
 
-> **Does frozen dwell gradient add held-out information beyond ordinary spectral slowing in completely independent subjects?**
+`INTERNAL_DERIVATIVE_DWELL_SEPARATION_NO_INCREMENT`
+
+This is the main current result. Φ-Dwell still measures a disease-associated difference, but on cleaned EEG it does **not** improve held-out AD/CN discrimination beyond age + ordinary spectral slowing in this cohort.
+
+Full cleaned-data receipt: [`INTERNAL_DERIVATIVE_AUDIT_RESULT_2026.md`](INTERNAL_DERIVATIVE_AUDIT_RESULT_2026.md).
+
+## Severity claim: not supported
+
+The pooled historical MMSE association does not survive as a within-disease severity result.
+
+Raw-style:
+
+```text
+within AD:  rho = +0.215, p = 0.207
+within FTD: rho = +0.121, p = 0.582
+```
+
+Cleaned:
+
+```text
+within AD:  rho = +0.269, p = 0.113
+within FTD: rho = -0.009, p = 0.969
+```
+
+The defensible claim is group association in a discovery cohort, not cognitive-severity tracking.
+
+## Age warning was preprocessing-sensitive
+
+The raw-style audit found a strong dwell/age association in controls (`rho = -0.599`, `p = 0.000597`). After derivative preprocessing it vanished (`rho = -0.100`, `p = 0.607`). That makes the earlier age signal a robustness warning rather than a stable biological result.
+
+## The boring competitor wins the current diagnostic contest
+
+Alzheimer's EEG slowing is plainly visible in this dataset. In the cleaned analysis, age + alpha relative power + theta/alpha ratio + peak alpha frequency reached mean AUC `0.778`, while adding dwell gradient changed that to `0.777`.
+
+So the current interpretation is:
+
+> **Φ-Dwell may be an interesting spatial-dynamical representation of disease-related EEG change, but ds004504 does not show added diagnostic value beyond simple spectral slowing after cleaning.**
+
+That is a useful result. It removes the strongest easy explanation for calling this a new cheap Alzheimer detector.
 
 ## Frozen external gate
+
+The only decisive next test is on **completely independent AD/CN subjects** with the definition unchanged.
 
 ```text
 Model A: age + spectral baselines
@@ -123,42 +148,28 @@ Model C: age + spectral baselines + dwell_gradient
 
 Primary comparison: **C versus A on independent subjects**.
 
-No changing bands, graph modes, word step, dwell definition, log transform, gradient direction, or primary endpoint after external labels are inspected.
+No changing bands, graph modes, graph sigma, word step, dwell definition, log transform, gradient direction, age handling, or primary endpoint after external labels are inspected.
 
-Verdicts:
+External verdicts remain:
 
 - `EXTERNAL_DWELL_GRADIENT_NULL`
 - `REPLICATES_BUT_NO_INCREMENT_OVER_SPECTRAL_SLOWING`
 - `EXTERNAL_INCREMENTAL_SIGNAL`
 
-Even the last verdict would establish a research signal, not clinical diagnostic utility.
-
-## Next internal robustness test: cleaned EEG
-
-A useful non-confirmatory check is to recompute the **same** dwell feature on the dataset's derivative / cleaned EEG.
-
-```bat
-python3.13 phidwell_dwell_recompute.py "E:\PATH\TO\ds004504" ^
-  --use-derivatives ^
-  --out "Results\phidwell_dwell_derivatives.json"
-
-python3.13 phidwell_spectral_audit.py "E:\PATH\TO\ds004504" ^
-  --results "Results\phidwell_dwell_derivatives.json" ^
-  --use-derivatives ^
-  --out "Results\phidwell_spectral_audit_derivatives.json"
-```
-
-This still uses the same people, so it is a preprocessing robustness receipt only.
+Even `EXTERNAL_INCREMENTAL_SIGNAL` would establish a research signal, not clinical diagnostic utility.
 
 ## Key files
 
 - `eigenmode_metastability.py` — foundational dwell analysis.
 - `phidwell_alzheimers.py` — historical discovery analyzer.
 - `brain_viscosity.py` — origin of the dwell-gradient candidate.
-- `phidwell_spectral_audit.py` — 2026 spectral-slowing internal audit.
-- `phidwell_dwell_recompute.py` — exact frozen dwell recomputation for raw/derivative robustness.
+- `phidwell_spectral_audit.py` — 2026 spectral-slowing audit.
+- `phidwell_dwell_recompute.py` — frozen dwell recomputation on raw/derivative EEG.
 - `AUDIT_2026.md` — methodological audit and frozen external gate.
-- `INTERNAL_SPECTRAL_AUDIT_RESULT_2026.md` — current internal audit receipt.
+- `INTERNAL_SPECTRAL_AUDIT_RESULT_2026.md` — raw-style internal receipt.
+- `INTERNAL_DERIVATIVE_AUDIT_RESULT_2026.md` — cleaned EEG robustness receipt.
+- `Results/phidwell_spectral_audit.json` — raw-style machine-readable receipt.
+- `Results/phidwell_spectral_audit_derivatives.json` — cleaned machine-readable receipt.
 - `Alzheimers Phase Stability Index Test/` — quarantined exploratory PSI work.
 
 ## Clinical boundary
