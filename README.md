@@ -1,146 +1,169 @@
 # Brain Metastability Analyzer Tool
 
-> **2026 reality-audit reset:** this repository contains a real EEG state-space idea, but the Alzheimer's claims are exploratory and are **not** yet a validated diagnostic tool.
+> **2026 reality-audit reset:** this repository contains a real EEG state-space idea, but the Alzheimer's claims remain exploratory and are **not** a validated diagnostic tool.
 
-This project decomposes scalp EEG phase patterns into spatial modes of the electrode geometry and measures how those mode configurations persist and change over time. The most defensible core is simple:
+Live audit page: **https://anttiluode.github.io/BrainMetastabilityAnalyzerTool/**
+
+## What Φ-Dwell actually measures
 
 ```text
 EEG phase at sensors
     ↓
-spatial graph-Laplacian basis
+spatial graph-Laplacian basis built from electrode geometry
     ↓
 dominant sensor-phase mode per frequency band
     ↓
 dwell times / transitions / discrete multi-band states
 ```
 
-The older repository text used terms such as *holographic brain*, *criticality*, *grammar*, and *brain viscosity*. Those names can be useful metaphors, but they are not evidence. The 2026 audit separates the measurable quantities from the story around them.
+The safest name is **spatial sensor-phase modes**. These are modes of the electrode-layout graph, not structural-connectome eigenmodes and not a holographic reconstruction of the brain.
+
+The older repository used terms such as *holographic brain*, *criticality*, *grammar*, and *brain viscosity*. Those can be metaphors, but they are not evidence. See [`AUDIT_2026.md`](AUDIT_2026.md).
 
 ## What survives the audit
 
 **Keep:**
 
-- Graph-Laplacian projection of multichannel EEG phase onto spatial **sensor-layout modes**.
-- Dominant-mode dwell times and transition statistics as descriptive EEG dynamics.
-- Multi-band state words as an exploratory discrete representation.
-- The previously discovered **dwell gradient** across delta → theta → alpha → beta → gamma as a candidate feature worth an independent replication test.
+- graph-Laplacian projection of multichannel EEG phase onto spatial sensor-layout modes;
+- per-band dominant-mode dwell times and transition statistics;
+- multi-band state words as an exploratory discretization;
+- the already-discovered **dwell gradient** as one candidate worth a frozen independent replication.
 
-**Treat as exploratory / repair before reuse:**
+**Repair / quarantine:**
 
-- Vocabulary size, entropy, Zipf slope and top-word concentration: several are different summaries of the same empirical state-frequency distribution and are not independent biomarkers.
-- Perplexity in `phidwell_alzheimers.py`: the current implementation builds and scores the bigram model on the same subject sequence, so it is descriptive training perplexity rather than held-out prediction.
-- Cross-band coupling based on Pearson correlation of integer mode labels: mode IDs are categorical, so this metric is not invariant to arbitrary relabeling and should be replaced.
-- `criticality_fraction`: the current rule is simply dwell-time CV > 1. CV is a useful variability statistic, but by itself it does not establish critical dynamics.
-- PSI / Gerchberg–Saxton phase recovery: interesting mathematical probe, but currently an arbitrary transform of the eigenmode coefficients with no independent validation as a biological phase-stability measure.
+- Pearson correlation of integer mode IDs is not a sound categorical coupling measure;
+- `CV > 1` is dwell variability, not proof of criticality;
+- Alzheimer bigram perplexity is trained and scored on the same sequence;
+- PhysioNet “task doubles vocabulary” used unequal observation time and whole-run task labels despite alternating T0/T1/T2 epochs;
+- PSI / Gerchberg–Saxton remains an unvalidated exploratory transform;
+- the legacy age parser reads lowercase `age` even though ds004504 uses `Age`.
 
-See [`AUDIT_2026.md`](AUDIT_2026.md) for the detailed audit and frozen next test.
+## Strongest candidate: dwell gradient
 
-## The strongest candidate: dwell gradient
-
-The later `brain_viscosity.py` branch derived a very simple feature from the existing per-band dwell measurements:
+The later `brain_viscosity.py` branch contains a simple feature that does not need the viscosity story:
 
 \[
 g = \operatorname{slope}\left[\log(1+D_\delta),\log(1+D_\theta),\log(1+D_\alpha),\log(1+D_\beta),\log(1+D_\gamma)\right].
 \]
 
-On the discovery dataset (`OpenNeuro ds004504`, 36 AD, 23 FTD, 29 controls), the repository reported:
+Historical discovery on OpenNeuro `ds004504` reported AD/CN separation around `p ≈ 0.0003` and a pooled MMSE association around `rho ≈ 0.408`. Those were discovery statistics from the same cohort on which the feature was developed.
 
-- Kruskal–Wallis across groups: `p = 0.0015`
-- AD vs control: `p = 0.0003`
-- pooled MMSE correlation: `rho = 0.408`, `p = 0.0001`
+## 2026 internal spectral-slowing audit
 
-Those numbers are **discovery statistics**, not confirmation. The dwell-gradient feature was created after inspecting the same dataset, so the p-values cannot be interpreted as if the feature had been specified in advance.
+The audit was written before its output was inspected. It processed all **88 subjects with zero failures** and compared the frozen dwell gradient with ordinary spectral slowing.
 
-The pooled MMSE correlation also needs care: in ds004504 all controls have MMSE = 30, so a feature that merely separates diagnosis groups can automatically correlate with MMSE. A proper severity question should be tested within AD (and/or within disease groups), not only across the pooled diagnostic sample.
+### AD versus controls
 
-## The boring competitor: ordinary spectral slowing
+| Feature | AD mean | CN mean | p |
+|---|---:|---:|---:|
+| dwell gradient | -0.4469 | -0.4164 | 0.000277 |
+| alpha relative power | 0.0481 | 0.0755 | 0.004101 |
+| theta / alpha ratio | 2.6013 | 1.8297 | 0.000993 |
+| peak alpha frequency | 7.479 Hz | 8.664 Hz | 0.000124 |
 
-Any Alzheimer's EEG feature has to beat or add to the well-known spectral slowing signal. Dementia EEG commonly shows reduced dominant/alpha frequency and a shift toward relatively slower activity. That means a spatial-mode dwell effect can be interesting without being diagnostically new: it may simply be another view of the same alpha/theta slowing.
+So ordinary spectral slowing is plainly present. Peak alpha frequency is at least as striking a simple group marker as dwell gradient in this cohort.
 
-The next validation therefore must compare the frozen Φ-Dwell candidate against ordinary spectral baselines such as:
+### Severity check
 
-```text
-alpha relative power
-theta / alpha power ratio
-peak alpha frequency
-```
-
-The important question is not merely *"does dwell gradient differ between AD and controls?"* It is:
-
-> **Does frozen dwell gradient add held-out information beyond ordinary spectral slowing?**
-
-If not, the representation may still be scientifically useful, but it should not be sold as a new cheap Alzheimer's biomarker.
-
-## Important implementation findings
-
-### 1. These are sensor-layout eigenmodes
-
-The Laplacian is built from a Gaussian graph over electrode coordinates. It is not a structural-connectome eigenbasis and does not recover cortical anatomy. The safest wording is **spatial sensor-phase modes**.
-
-### 2. Age parsing bug
-
-The public dataset uses a column named `Age`; the original parser looks for lowercase `age`. This is why existing saved results contain `age: null`. No age-adjusted claim should be made from those saved results until the parser is repaired and the analysis rerun.
-
-### 3. Current cross-band coupling is mathematically unsound
-
-The code correlates dominant mode IDs as numbers. Renaming mode 1 ↔ 6 changes Pearson correlation even though the categorical brain-state sequence is unchanged. Replace this with a label-invariant statistic such as mutual information, normalized mutual information, or a measure on the continuous eigenmode coefficient vectors.
-
-### 4. The task-vocabulary result is confounded
-
-The current PhysioNet grammar scripts concatenate roughly two short baseline runs for REST but six longer motor-imagery runs for TASK, and they label whole motor-imagery recordings as TASK even though those recordings alternate T0 rest and T1/T2 task epochs. Vocabulary size increases with observation time, so the published "task doubles vocabulary" result requires an equal-duration, event-conditioned rerun.
-
-### 5. Raw versus cleaned EEG must be checked
-
-Spatial phase measures are sensitive to reference choice, ocular/muscle contamination and other sensor-space structure. The Alzheimer's result should be rerun both on the raw input used historically and on the dataset's cleaned/preprocessed derivative where available.
-
-## Frozen next gate
-
-Before looking at a new Alzheimer's EEG cohort, freeze this primary question:
-
-> **Does the existing dwell-gradient definition distinguish AD from controls in independent subjects, without changing its definition, and does it add information beyond ordinary spectral slowing?**
-
-Recommended primary feature:
+The pooled MMSE result did **not** become a within-disease severity result:
 
 ```text
-dwell_gradient only
+within AD:  dwell_gradient vs MMSE  rho = 0.215, p = 0.207
+within FTD: dwell_gradient vs MMSE  rho = 0.121, p = 0.582
 ```
 
-Recommended comparison:
+That strongly suggests the historical pooled MMSE correlation was substantially driven by diagnostic-group separation.
+
+### Internal subject-wise cross-validation
 
 ```text
-Model A: spectral baselines only
-Model B: dwell_gradient only
-Model C: spectral baselines + dwell_gradient
+A = age + spectral                       AUC = 0.729 ± 0.142
+B = age + dwell_gradient                 AUC = 0.756 ± 0.132
+C = age + spectral + dwell_gradient      AUC = 0.768 ± 0.128
+
+C - A = +0.039 AUC
 ```
 
-Use subject-wise held-out evaluation. No tuning of bands, number of modes, word step, dwell definition, or gradient direction after seeing the external labels.
+This is interesting, but it is **not external validation**. Dwell gradient was invented after looking at the same ds004504 cohort, so cross-validation cannot erase feature-selection history. The +0.039 increment is a reason to perform the frozen external test, not a validated effect size.
 
-Interpretation:
+Full receipt: [`INTERNAL_SPECTRAL_AUDIT_RESULT_2026.md`](INTERNAL_SPECTRAL_AUDIT_RESULT_2026.md) and [`Results/phidwell_spectral_audit.json`](Results/phidwell_spectral_audit.json).
 
-- **Fails externally:** retire the Alzheimer's biomarker claim.
-- **Replicates but adds nothing beyond spectral slowing:** keep as an alternative representation, not a new biomarker.
-- **Replicates and improves held-out performance beyond spectral baselines:** strong reason to continue.
+## Age warning
 
-## Current files
+With age parsed correctly, dwell gradient showed:
+
+```text
+within AD: rho = +0.142, p = 0.409
+within CN: rho = -0.599, p = 0.000597
+```
+
+The strong control-group age association is a real warning. External evaluation must preserve age handling and should report age balance / age-matched sensitivity.
+
+## The boring competitor: spectral slowing
+
+Any Alzheimer's EEG feature has to add something beyond well-known slowing of EEG frequency content. The frozen baseline is:
+
+```text
+alpha_relative_power = P(8-13 Hz) / P(1-45 Hz)
+theta_alpha_ratio    = P(4-8 Hz) / P(8-13 Hz)
+peak_alpha_frequency = PSD peak in 7-13 Hz
+```
+
+The important question is now:
+
+> **Does frozen dwell gradient add held-out information beyond ordinary spectral slowing in completely independent subjects?**
+
+## Frozen external gate
+
+```text
+Model A: age + spectral baselines
+Model B: age + dwell_gradient
+Model C: age + spectral baselines + dwell_gradient
+```
+
+Primary comparison: **C versus A on independent subjects**.
+
+No changing bands, graph modes, word step, dwell definition, log transform, gradient direction, or primary endpoint after external labels are inspected.
+
+Verdicts:
+
+- `EXTERNAL_DWELL_GRADIENT_NULL`
+- `REPLICATES_BUT_NO_INCREMENT_OVER_SPECTRAL_SLOWING`
+- `EXTERNAL_INCREMENTAL_SIGNAL`
+
+Even the last verdict would establish a research signal, not clinical diagnostic utility.
+
+## Next internal robustness test: cleaned EEG
+
+A useful non-confirmatory check is to recompute the **same** dwell feature on the dataset's derivative / cleaned EEG.
+
+```bat
+python3.13 phidwell_dwell_recompute.py "E:\PATH\TO\ds004504" ^
+  --use-derivatives ^
+  --out "Results\phidwell_dwell_derivatives.json"
+
+python3.13 phidwell_spectral_audit.py "E:\PATH\TO\ds004504" ^
+  --results "Results\phidwell_dwell_derivatives.json" ^
+  --use-derivatives ^
+  --out "Results\phidwell_spectral_audit_derivatives.json"
+```
+
+This still uses the same people, so it is a preprocessing robustness receipt only.
+
+## Key files
 
 - `eigenmode_metastability.py` — foundational dwell analysis.
-- `phidwell_deep_analyzer.py` — exploratory configuration-space analysis.
-- `phidwell_grammar_decoder.py` — state vocabulary analysis.
-- `phidwell_perplexity.py` — rest/task n-gram analysis; needs equal-duration event conditioning for a clean task test.
-- `phidwell_alzheimers.py` — discovery analysis on OpenNeuro ds004504; requires audit fixes before new claims.
-- `brain_viscosity.py` — contains the dwell-gradient candidate; the "viscosity" analogy is not required for the metric.
-- `Alzheimers Phase Stability Index Test/` — PSI experiment; quarantined as exploratory until simpler metrics replicate.
-- `Results/` — historical outputs. Treat them as discovery receipts, not independent validation.
+- `phidwell_alzheimers.py` — historical discovery analyzer.
+- `brain_viscosity.py` — origin of the dwell-gradient candidate.
+- `phidwell_spectral_audit.py` — 2026 spectral-slowing internal audit.
+- `phidwell_dwell_recompute.py` — exact frozen dwell recomputation for raw/derivative robustness.
+- `AUDIT_2026.md` — methodological audit and frozen external gate.
+- `INTERNAL_SPECTRAL_AUDIT_RESULT_2026.md` — current internal audit receipt.
+- `Alzheimers Phase Stability Index Test/` — quarantined exploratory PSI work.
 
 ## Clinical boundary
 
-This repository is research software. It is **not a medical device, diagnostic test, or clinical decision tool**. The existing results come from public research datasets and have not established prospective diagnostic accuracy, generalization across acquisition systems, or added value beyond standard EEG markers.
-
-## Live page
-
-GitHub Pages is enabled for this repository. The static audit page is at:
-
-**https://anttiluode.github.io/BrainMetastabilityAnalyzerTool/**
+This repository is research software. It is **not a medical device, diagnostic test, or clinical decision tool**. No prospective diagnostic accuracy, acquisition-system generalization, or clinical utility has been established.
 
 ## License
 
