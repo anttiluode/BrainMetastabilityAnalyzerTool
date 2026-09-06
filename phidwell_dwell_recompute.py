@@ -22,6 +22,7 @@ straight into `phidwell_spectral_audit.py --results ...`.
 from __future__ import annotations
 
 import argparse
+import csv
 import json
 from pathlib import Path
 
@@ -34,8 +35,35 @@ from phidwell_alzheimers import (
     analyze_subject,
     build_graph_laplacian,
     find_eeg_files,
-    parse_participants,
 )
+
+
+def _as_float(value):
+    text = "" if value is None else str(value).strip()
+    if not text or text.lower() in {"n/a", "na", "nan", "none"}:
+        return None
+    try:
+        return float(text)
+    except ValueError:
+        return None
+
+
+def parse_participants_fixed(dataset: str) -> dict:
+    """Read the actual BIDS field names (`Age`, `Group`, `MMSE`, `Gender`)."""
+    path = Path(dataset) / "participants.tsv"
+    out = {}
+    with path.open("r", encoding="utf-8-sig", newline="") as f:
+        for row in csv.DictReader(f, delimiter="\t"):
+            sid = str(row.get("participant_id", "")).strip()
+            if not sid:
+                continue
+            out[sid] = {
+                "group": str(row.get("Group", row.get("group", ""))).strip(),
+                "age": _as_float(row.get("Age", row.get("age"))),
+                "mmse": _as_float(row.get("MMSE", row.get("mmse"))),
+                "gender": str(row.get("Gender", row.get("gender", row.get("sex", "")))).strip(),
+            }
+    return out
 
 
 def frozen_gradient(band_mean_dwell: dict) -> float:
@@ -52,7 +80,7 @@ def main() -> None:
     parser.add_argument("--out", required=True, help="Output JSON")
     args = parser.parse_args()
 
-    participants = parse_participants(args.dataset)
+    participants = parse_participants_fixed(args.dataset)
     files = find_eeg_files(args.dataset, args.use_derivatives)
     graph_names, _, eigenvecs, _ = build_graph_laplacian(ELECTRODE_POS_19)
 
@@ -81,6 +109,7 @@ def main() -> None:
             "group": {"A": "AD", "F": "FTD", "C": "CN"}.get(p.get("group"), p.get("group")),
             "mmse": p.get("mmse"),
             "age": p.get("age"),
+            "gender": p.get("gender"),
             "band_mean_dwell": dwell,
             "dwell_gradient": gradient,
             "n_channels": int(metrics["n_channels"]),
