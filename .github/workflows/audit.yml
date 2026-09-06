@@ -1,0 +1,31 @@
+name: Reality audit checks
+
+on:
+  push:
+    branches: ["main"]
+    paths:
+      - "phidwell_spectral_audit.py"
+      - "AUDIT_2026.md"
+      - "index.html"
+      - ".github/workflows/audit.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  syntax-and-static:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Compile audit harness
+        run: python -m py_compile phidwell_spectral_audit.py
+      - name: Check audit artifacts
+        run: |
+          test -s AUDIT_2026.md
+          test -s index.html
+          grep -q "spectral slowing" index.html
+          grep -q "EXTERNAL_DWELL_GRADIENT_NULL" AUDIT_2026.md
