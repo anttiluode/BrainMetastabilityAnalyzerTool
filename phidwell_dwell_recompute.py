@@ -23,6 +23,7 @@ from __future__ import annotations
 
 import argparse
 import csv
+import glob
 import json
 from pathlib import Path
 
@@ -34,7 +35,6 @@ from phidwell_alzheimers import (
     ELECTRODE_POS_19,
     analyze_subject,
     build_graph_laplacian,
-    find_eeg_files,
 )
 
 
@@ -66,6 +66,38 @@ def parse_participants_fixed(dataset: str) -> dict:
     return out
 
 
+def find_subject_files(dataset: str, use_derivatives: bool) -> dict:
+    """Find one deterministic EEG file per subject, including nested derivatives."""
+    root = Path(dataset) / "derivatives" if use_derivatives else Path(dataset)
+    candidates = []
+    for ext in ("set", "edf", "fif"):
+        candidates.extend(glob.glob(str(root / "**" / f"*.{ext}"), recursive=True))
+
+    by_subject = {}
+    for filename in sorted(set(candidates)):
+        parts = Path(filename).parts
+        sid = next((p for p in parts if p.startswith("sub-")), None)
+        if sid is None:
+            continue
+        by_subject.setdefault(sid, []).append(filename)
+
+    selected = {}
+    for sid, paths in by_subject.items():
+        # Prefer EEG-looking files, then paths with /eeg/, then the shortest
+        # deterministic path. This avoids accidentally preferring sidecar-like
+        # exports when derivative packages contain multiple files.
+        paths.sort(
+            key=lambda p: (
+                "eeg" not in Path(p).name.lower(),
+                "eeg" not in [x.lower() for x in Path(p).parts],
+                len(p),
+                p,
+            )
+        )
+        selected[sid] = paths[0]
+    return selected
+
+
 def frozen_gradient(band_mean_dwell: dict) -> float:
     values = [np.log(float(band_mean_dwell[b]) + 1.0) for b in BAND_NAMES]
     slope, _, _, _, _ = stats.linregress(np.arange(len(BAND_NAMES), dtype=float), values)
@@ -81,7 +113,7 @@ def main() -> None:
     args = parser.parse_args()
 
     participants = parse_participants_fixed(args.dataset)
-    files = find_eeg_files(args.dataset, args.use_derivatives)
+    files = find_subject_files(args.dataset, args.use_derivatives)
     graph_names, _, eigenvecs, _ = build_graph_laplacian(ELECTRODE_POS_19)
 
     print(f"Frozen dwell recompute: {len(files)} EEG files")
