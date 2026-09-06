@@ -26,7 +26,7 @@ No claim about holography, thought content, consciousness, or a literal brain gr
 - Per-band dominant-mode dwell times.
 - Transition statistics.
 - Multi-band state words as an exploratory discretization.
-- `dwell_gradient` as a single candidate for independent replication.
+- `dwell_gradient` as a single frozen candidate for independent replication.
 
 ### EXPLORATORY / QUARANTINE
 
@@ -85,11 +85,9 @@ pooled MMSE Spearman               rho = 0.408, p = 0.0001
 
 These are discovery statistics, not confirmation.
 
-## 5. 2026 internal spectral-slowing audit — completed
+## 5. Internal raw-style spectral audit — completed
 
-The audit harness was written before this output was inspected. It processed all 88 subjects with zero failures using the frozen dwell-gradient definition and three ordinary spectral baselines.
-
-### AD versus controls
+The frozen audit processed all 88 subjects with zero failures and compared dwell gradient with three ordinary spectral baselines.
 
 | Feature | AD mean | CN mean | p |
 |---|---:|---:|---:|
@@ -98,20 +96,7 @@ The audit harness was written before this output was inspected. It processed all
 | theta / alpha ratio | 2.6013 | 1.8297 | 0.000993 |
 | peak alpha frequency | 7.479 Hz | 8.664 Hz | 0.000124 |
 
-Ordinary spectral slowing is therefore plainly present in this cohort. Peak alpha frequency is at least as striking a univariate group marker as dwell gradient.
-
-### Severity sanity check
-
-The historical pooled MMSE association does not become a clean within-disease severity effect:
-
-```text
-within AD:  dwell_gradient vs MMSE  rho = 0.2154, p = 0.2072, n = 36
-within FTD: dwell_gradient vs MMSE  rho = 0.1210, p = 0.5824, n = 23
-```
-
-This substantially weakens the old “tracks severity” interpretation. The pooled MMSE relationship was entangled with diagnostic-group separation.
-
-### Internal repeated subject-wise CV
+Internal repeated subject-wise CV:
 
 ```text
 A = age + spectral                       AUC = 0.729 ± 0.142
@@ -121,28 +106,88 @@ C = age + spectral + dwell_gradient      AUC = 0.768 ± 0.128
 C - A = +0.039 AUC
 ```
 
-This is the strongest internal reason to keep going: the spatial dwell feature contributes a small positive mean increment beyond the three simple slowing features.
+This was interesting but not external validation. The feature was developed on the same cohort.
 
-But it is **not external validation**. `dwell_gradient` was invented after inspecting ds004504. Cross-validation can reduce model-fitting leakage; it cannot erase the feature-selection history.
+Raw-style receipt: [`INTERNAL_SPECTRAL_AUDIT_RESULT_2026.md`](INTERNAL_SPECTRAL_AUDIT_RESULT_2026.md).
 
-Full receipt: [`INTERNAL_SPECTRAL_AUDIT_RESULT_2026.md`](INTERNAL_SPECTRAL_AUDIT_RESULT_2026.md) and [`Results/phidwell_spectral_audit.json`](Results/phidwell_spectral_audit.json).
+## 6. Internal derivative / cleaned EEG audit — completed
 
-## 6. Age warning
+The same frozen spatial-phase and dwell transform was recomputed on the dataset's derivative / cleaned EEG, again with 88/88 subjects processed.
 
-The audit fixed the old parser issue (`Age` in the BIDS table versus lowercase `age` in legacy code). With age available:
+| Feature | AD mean | CN mean | p |
+|---|---:|---:|---:|
+| `dwell_gradient` | -0.3551 | -0.3275 | 0.006175 |
+| alpha relative power | 0.0494 | 0.0794 | 0.002351 |
+| theta / alpha ratio | 2.5318 | 1.6045 | 0.0000732 |
+| peak alpha frequency | 7.493 Hz | 8.681 Hz | 0.000155 |
+
+The univariate dwell difference therefore survives preprocessing, although it weakens.
+
+The decisive internal comparison changes much more strongly:
 
 ```text
-within AD: dwell_gradient vs age  rho = +0.1421, p = 0.4085
-within CN: dwell_gradient vs age  rho = -0.5990, p = 0.000597
+A = age + spectral                       AUC = 0.778 ± 0.121
+B = age + dwell_gradient                 AUC = 0.694 ± 0.128
+C = age + spectral + dwell_gradient      AUC = 0.777 ± 0.118
+
+C - A = -0.00125 AUC
 ```
 
-The strong age relationship among controls is a real warning. External evaluation must preserve the frozen age covariate and should report age balance / age-matched sensitivity. The current linear age term does not prove that all age-related structure has been removed.
+Internal classification:
 
-## 7. The boring baseline: spectral slowing
+`INTERNAL_DERIVATIVE_DWELL_SEPARATION_NO_INCREMENT`
+
+This means the disease-associated dwell difference is not simply destroyed by cleaning, but its apparent **incremental diagnostic value beyond ordinary slowing is preprocessing-sensitive and disappears in the cleaned representation**.
+
+That substantially weakens the case for Φ-Dwell as a new cheap Alzheimer biomarker on ds004504. The representation may still be scientifically useful as a spatial-dynamical view of disease-related EEG change.
+
+Cleaned receipt: [`INTERNAL_DERIVATIVE_AUDIT_RESULT_2026.md`](INTERNAL_DERIVATIVE_AUDIT_RESULT_2026.md).
+
+## 7. Severity claim — not supported
+
+The historical pooled MMSE association does not become a reliable within-disease severity effect.
+
+Raw-style:
+
+```text
+within AD:  rho = +0.215, p = 0.207
+within FTD: rho = +0.121, p = 0.582
+```
+
+Derivative / cleaned:
+
+```text
+within AD:  rho = +0.269, p = 0.113
+within FTD: rho = -0.009, p = 0.969
+```
+
+The old pooled MMSE relationship was entangled with diagnostic-group separation. The repository should not claim that dwell gradient tracks cognitive severity.
+
+## 8. Age warning became preprocessing-sensitive
+
+The raw-style audit found:
+
+```text
+within AD: dwell vs age  rho = +0.142, p = 0.409
+within CN: dwell vs age  rho = -0.599, p = 0.000597
+```
+
+After derivative preprocessing:
+
+```text
+within AD: dwell vs age  rho = +0.276, p = 0.103
+within CN: dwell vs age  rho = -0.100, p = 0.607
+```
+
+The strong control-age relationship therefore does not survive preprocessing and should not be treated as a stable biological finding.
+
+Age still remains a frozen covariate for external evaluation.
+
+## 9. The boring baseline: spectral slowing
 
 Any Alzheimer's EEG feature must be tested against ordinary spectral slowing.
 
-Freeze these baseline features:
+Frozen baselines:
 
 ```text
 alpha_relative_power = power(8-13 Hz) / power(1-45 Hz)
@@ -150,39 +195,25 @@ theta_alpha_ratio    = power(4-8 Hz) / power(8-13 Hz)
 peak_alpha_frequency = peak frequency in 7-13 Hz
 ```
 
+The cleaned internal result currently favors the boring explanation for diagnostic performance: spectral features alone reach mean AUC `0.778`, and adding dwell changes that to `0.777`.
+
+This does **not** prove dwell and spectral slowing are mathematically identical. It shows that the current dwell feature contributes no additional held-out discrimination in this cleaned cohort under the frozen model.
+
 References:
 
 - Bruffaerts et al. (2025), *Diagnostic utility of electrophysiological markers for early and differential diagnosis of Alzheimer's, Frontotemporal, and Lewy Body dementias: A systematic review*. PMID 40379988.
 - *EEG biomarkers in Alzheimer's and prodromal Alzheimer's: a comprehensive analysis of spectral and connectivity features*. PMID 39449097.
 - Paitel et al. (2025), *Functional and effective EEG connectivity patterns in Alzheimer's disease and mild cognitive impairment: a systematic review*. PMID 40013094.
 
-The comparator is a strength, not an embarrassment. If Φ-Dwell is useful it should show what it contributes **after** obvious spectral slowing is measured.
-
-## 8. Raw versus cleaned EEG
-
-Spatial phase measures can be sensitive to reference choice and ocular / muscle artifacts. The next internal robustness check is therefore:
-
-```text
-historical/raw-style pipeline
-        versus
-cleaned / derivative pipeline
-```
-
-Use [`phidwell_dwell_recompute.py`](phidwell_dwell_recompute.py) to recompute the unchanged dwell definition and then run the same spectral audit on the derivative EEG.
-
-A result that only exists in the dirtier representation should not be promoted as a neural spatial-dynamics biomarker.
-
-This robustness check still reuses the same people and cannot validate the Alzheimer claim.
-
-## 9. PSI status
+## 10. PSI status
 
 The Phase-Stability Index maps eigenmode power vectors onto an artificial radial canvas and measures Gerchberg–Saxton phase-recovery convergence.
 
-Gerchberg–Saxton is a real optimization algorithm. The biological interpretation of its convergence count is currently unvalidated. PSI remains **quarantined exploratory work** until the simpler dwell feature independently replicates.
+Gerchberg–Saxton is a real optimization algorithm. The biological interpretation of its convergence count is currently unvalidated. PSI remains quarantined exploratory work.
 
 A historical PSI README also states that `p = 0.006` survives a Bonferroni threshold of approximately `0.003`; mathematically it does not (`0.006 > 0.003`).
 
-## 10. Frozen external validation gate
+## 11. Frozen external validation gate
 
 ### Primary question
 
@@ -216,11 +247,12 @@ After external labels are inspected, do not change:
 - log transform;
 - gradient direction;
 - primary endpoint;
-- spectral baseline definitions.
+- spectral baseline definitions;
+- age handling.
 
 Other variants become new hypotheses for another held-out cohort.
 
-### Verdicts
+### External verdicts
 
 - `EXTERNAL_DWELL_GRADIENT_NULL` — no reliable external AD/CN signal.
 - `REPLICATES_BUT_NO_INCREMENT_OVER_SPECTRAL_SLOWING` — representation is interesting, but not a new biomarker.
@@ -228,14 +260,15 @@ Other variants become new hypotheses for another held-out cohort.
 
 Even the last verdict would establish a research signal, **not clinical diagnostic utility**.
 
-## 11. Boundary
+## 12. Current boundary
 
 ```text
 INTERNAL AUDIT
 - spectral slowing comparison: DONE
 - within-AD MMSE: DONE (null)
-- age parsing / age dependence: DONE (warning)
-- raw vs cleaned: NEXT
+- age parsing: DONE
+- raw vs cleaned: DONE
+- cleaned incremental value: NONE under current frozen model
 - event/duration-matched PhysioNet task analysis: optional mechanism audit
 
 EXTERNAL VALIDATION
@@ -246,4 +279,4 @@ EXTERNAL VALIDATION
 - subject-wise held-out evaluation
 ```
 
-That boundary is the main scientific upgrade to this repository.
+The next Alzheimer test should use new people. Do not retune ds004504 to recover the lost `+0.039` increment.
