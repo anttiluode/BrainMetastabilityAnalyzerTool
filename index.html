@@ -1,0 +1,259 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="Reality audit of Φ-Dwell / BrainMetastabilityAnalyzerTool: spatial sensor-phase modes, Alzheimer's discovery results, spectral slowing baseline, and frozen external validation gate." />
+  <title>Φ-Dwell Reality Audit — Brain Metastability Analyzer</title>
+  <style>
+    :root {
+      --bg: #071018;
+      --panel: #0d1a24;
+      --panel2: #112330;
+      --text: #e8f0f5;
+      --muted: #9fb0bb;
+      --line: #243947;
+      --good: #65d5a5;
+      --warn: #f4c76f;
+      --bad: #ff7f7f;
+      --cyan: #68c7e8;
+      --purple: #b99cf3;
+      --max: 1120px;
+    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      background:
+        radial-gradient(circle at 18% 0%, rgba(104,199,232,.10), transparent 32rem),
+        radial-gradient(circle at 85% 12%, rgba(185,156,243,.08), transparent 28rem),
+        var(--bg);
+      color: var(--text);
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      line-height: 1.55;
+    }
+    a { color: var(--cyan); }
+    .wrap { max-width: var(--max); margin: 0 auto; padding: 0 22px; }
+    nav {
+      position: sticky; top: 0; z-index: 10;
+      background: rgba(7,16,24,.88);
+      backdrop-filter: blur(14px);
+      border-bottom: 1px solid var(--line);
+    }
+    nav .wrap { display: flex; gap: 20px; align-items: center; min-height: 58px; }
+    nav strong { margin-right: auto; letter-spacing: .02em; }
+    nav a { color: var(--muted); text-decoration: none; font-size: 14px; }
+    nav a:hover { color: var(--text); }
+    header { padding: 86px 0 56px; }
+    .kicker { color: var(--cyan); font-weight: 700; text-transform: uppercase; letter-spacing: .14em; font-size: 12px; }
+    h1 { margin: 12px 0 16px; font-size: clamp(42px, 7vw, 78px); line-height: .98; letter-spacing: -.045em; max-width: 900px; }
+    .lead { max-width: 820px; color: #c6d4dc; font-size: clamp(18px, 2.2vw, 24px); }
+    .badge-row { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 28px; }
+    .badge { border: 1px solid var(--line); background: rgba(17,35,48,.7); padding: 7px 11px; border-radius: 999px; color: var(--muted); font-size: 13px; }
+    section { padding: 58px 0; border-top: 1px solid rgba(36,57,71,.7); }
+    h2 { font-size: clamp(30px, 4vw, 46px); line-height: 1.08; margin: 0 0 14px; letter-spacing: -.03em; }
+    h3 { margin: 0 0 8px; font-size: 20px; }
+    p { margin: 0 0 16px; }
+    .muted { color: var(--muted); }
+    .grid { display: grid; gap: 16px; }
+    .g3 { grid-template-columns: repeat(3, 1fr); }
+    .g2 { grid-template-columns: repeat(2, 1fr); }
+    @media (max-width: 800px) { .g3, .g2 { grid-template-columns: 1fr; } nav a { display:none; } }
+    .card { background: linear-gradient(180deg, rgba(17,35,48,.78), rgba(13,26,36,.78)); border: 1px solid var(--line); border-radius: 16px; padding: 20px; }
+    .card.good { border-color: rgba(101,213,165,.38); }
+    .card.warn { border-color: rgba(244,199,111,.38); }
+    .card.bad { border-color: rgba(255,127,127,.36); }
+    .state { font-size: 12px; letter-spacing: .12em; text-transform: uppercase; font-weight: 800; margin-bottom: 8px; }
+    .good .state { color: var(--good); }
+    .warn .state { color: var(--warn); }
+    .bad .state { color: var(--bad); }
+    code, pre { font-family: "SFMono-Regular", Consolas, "Liberation Mono", monospace; }
+    pre { white-space: pre-wrap; background: #08131b; border: 1px solid var(--line); border-radius: 14px; padding: 18px; color: #cfe0e9; overflow-x: auto; }
+    .pipeline { font-size: clamp(15px, 2vw, 19px); text-align: center; color: #d8e6ed; }
+    .arrow { color: var(--cyan); }
+    .metric { font-size: 31px; font-weight: 760; letter-spacing: -.03em; }
+    .metric small { font-size: 13px; color: var(--muted); font-weight: 500; }
+    table { width: 100%; border-collapse: collapse; font-size: 14px; }
+    th, td { padding: 12px 10px; text-align: left; border-bottom: 1px solid var(--line); vertical-align: top; }
+    th { color: #b9c9d1; font-size: 12px; letter-spacing: .08em; text-transform: uppercase; }
+    .plot { margin-top: 22px; background:#08131b; border:1px solid var(--line); border-radius:16px; padding:18px; }
+    .barrow { display:grid; grid-template-columns: 105px 1fr 64px; align-items:center; gap:12px; margin:12px 0; }
+    .track { height: 16px; background:#132733; border-radius:99px; overflow:hidden; }
+    .fill { height:100%; border-radius:99px; background: linear-gradient(90deg, var(--cyan), var(--purple)); }
+    .callout { border-left: 4px solid var(--cyan); padding: 4px 0 4px 18px; margin: 24px 0; font-size: 20px; color:#d8e7ee; max-width: 900px; }
+    .callout.warnline { border-color: var(--warn); }
+    .gate { display:grid; grid-template-columns: 150px 1fr; gap:16px; padding:14px 0; border-bottom:1px solid var(--line); }
+    .gate b { color: var(--cyan); }
+    .refs li { margin: 10px 0; color: var(--muted); }
+    footer { padding: 44px 0 70px; color: var(--muted); font-size: 13px; border-top:1px solid var(--line); }
+    .buttons { display:flex; flex-wrap:wrap; gap:10px; margin-top:22px; }
+    .button { display:inline-block; text-decoration:none; border:1px solid var(--line); border-radius:10px; padding:10px 14px; background:var(--panel2); color:var(--text); font-weight:650; }
+    .button.primary { border-color: rgba(104,199,232,.55); background: rgba(104,199,232,.12); }
+  </style>
+</head>
+<body>
+<nav>
+  <div class="wrap">
+    <strong>Φ-Dwell · 2026 Audit</strong>
+    <a href="#core">Core</a>
+    <a href="#alz">Alzheimer's</a>
+    <a href="#slowing">Spectral slowing</a>
+    <a href="#problems">Audit</a>
+    <a href="#gate">Next gate</a>
+  </div>
+</nav>
+
+<header class="wrap">
+  <div class="kicker">BrainMetastabilityAnalyzerTool</div>
+  <h1>Keep the measurement. Put the story on trial.</h1>
+  <p class="lead">Φ-Dwell turns scalp EEG phase patterns into spatial sensor-mode trajectories. The representation is real. The Alzheimer's signal is interesting. The diagnostic claim is not yet validated.</p>
+  <div class="badge-row">
+    <span class="badge">spatial sensor-phase modes</span>
+    <span class="badge">dwell dynamics</span>
+    <span class="badge">discovery cohort: n=88</span>
+    <span class="badge">external validation: not yet</span>
+    <span class="badge">not a clinical diagnostic tool</span>
+  </div>
+  <div class="buttons">
+    <a class="button primary" href="AUDIT_2026.md">Read the full audit</a>
+    <a class="button" href="https://github.com/anttiluode/BrainMetastabilityAnalyzerTool">Repository</a>
+    <a class="button" href="phidwell_spectral_audit.py">Spectral audit script</a>
+  </div>
+</header>
+
+<section id="core">
+  <div class="wrap">
+    <div class="kicker">What the code actually measures</div>
+    <h2>A useful state-space transform without the metaphysics</h2>
+    <p class="muted">The graph Laplacian is built from electrode geometry. Its eigenvectors are therefore modes of the <b>sensor layout</b>, not structural-connectome eigenmodes and not a holographic reconstruction of the brain.</p>
+    <pre class="pipeline">EEG phase at electrodes
+<span class="arrow">↓</span>
+project complex phase field onto graph-Laplacian sensor modes
+<span class="arrow">↓</span>
+dominant spatial mode in δ / θ / α / β / γ
+<span class="arrow">↓</span>
+dwell times · transitions · multi-band state words</pre>
+    <div class="grid g3" style="margin-top:20px">
+      <div class="card good"><div class="state">Keep</div><h3>Mode projection</h3><p class="muted">A deterministic spatial basis for multichannel phase organization.</p></div>
+      <div class="card good"><div class="state">Keep</div><h3>Dwell time</h3><p class="muted">How long a band remains in the same dominant spatial sensor mode.</p></div>
+      <div class="card warn"><div class="state">Exploratory</div><h3>State vocabulary</h3><p class="muted">Useful discretization, but vocabulary size depends strongly on observation time.</p></div>
+    </div>
+  </div>
+</section>
+
+<section id="alz">
+  <div class="wrap">
+    <div class="kicker">Discovery result</div>
+    <h2>The part worth one clean replication</h2>
+    <p>The later “brain viscosity” branch contains a simple quantity that does not need the viscosity story: the slope of log dwell time across the ordered frequency bands.</p>
+    <pre>dwell_gradient = slope([
+  log(1 + D_delta),
+  log(1 + D_theta),
+  log(1 + D_alpha),
+  log(1 + D_beta),
+  log(1 + D_gamma)
+])</pre>
+    <div class="grid g3">
+      <div class="card"><div class="metric">0.0015 <small>KW p</small></div><p class="muted">Historical CN / AD / FTD discovery comparison.</p></div>
+      <div class="card"><div class="metric">0.0003 <small>AD vs CN p</small></div><p class="muted">Strong-looking pairwise discovery statistic.</p></div>
+      <div class="card"><div class="metric">0.408 <small>pooled MMSE ρ</small></div><p class="muted">Must not be read as a clean severity result because diagnosis and MMSE are entangled.</p></div>
+    </div>
+    <div class="callout warnline">These values were found after working on the same ds004504 cohort. They justify a frozen external test. They do not constitute that test.</div>
+  </div>
+</section>
+
+<section id="slowing">
+  <div class="wrap">
+    <div class="kicker">The boring competitor</div>
+    <h2>Alzheimer's EEG already slows. Φ-Dwell has to add something beyond that.</h2>
+    <p>A 2025 systematic review of 70 biomarker-proven dementia EEG studies found spectral slowing to be a common observation across dementias and described EEG as a promising low-cost, accessible modality. Other recent work reports increased theta-related power and theta/alpha or theta/beta ratios in AD, while alpha-band connectivity changes are among the most recurrent network findings.</p>
+    <p class="muted">That creates an obvious alternative explanation for the Φ-Dwell result: shorter or altered alpha-mode dwell may simply be another representation of ordinary spectral slowing.</p>
+    <div class="plot">
+      <h3>Frozen baseline features for the next audit</h3>
+      <div class="barrow"><span>Alpha power</span><div class="track"><div class="fill" style="width:74%"></div></div><code>8–13 Hz</code></div>
+      <div class="barrow"><span>Theta / alpha</span><div class="track"><div class="fill" style="width:56%"></div></div><code>4–8 / 8–13</code></div>
+      <div class="barrow"><span>Peak alpha</span><div class="track"><div class="fill" style="width:66%"></div></div><code>7–13 Hz</code></div>
+      <p class="muted" style="margin-top:14px">Bars are schematic, not data. The definitions are the point.</p>
+    </div>
+    <div class="callout">The question is no longer “does Φ-Dwell separate groups?” It is <b>“does dwell gradient add held-out information after ordinary spectral slowing is already measured?”</b></div>
+  </div>
+</section>
+
+<section id="problems">
+  <div class="wrap">
+    <div class="kicker">Reality audit</div>
+    <h2>Five things that materially change the old interpretation</h2>
+    <div class="grid g2">
+      <div class="card bad"><div class="state">Repair</div><h3>Categorical Pearson coupling</h3><p class="muted">Dominant mode IDs are labels. Pearson correlation changes under arbitrary relabeling, so the current cross-band coupling measure is mathematically inappropriate. Use label-invariant mutual information or continuous coefficient vectors.</p></div>
+      <div class="card bad"><div class="state">Rename</div><h3>“Criticality” from CV &gt; 1</h3><p class="muted">Dwell-time CV is legitimate. A threshold at one does not establish a critical phase transition. Call it dwell variability unless stronger evidence is added.</p></div>
+      <div class="card bad"><div class="state">Confounded</div><h3>Task vocabulary doubling</h3><p class="muted">Historical REST and TASK had very different amounts of data, and whole imagery recordings were labeled TASK despite alternating T0 and T1/T2 epochs. Re-run equal-duration event-conditioned comparisons.</p></div>
+      <div class="card warn"><div class="state">Descriptive only</div><h3>Alzheimer bigram perplexity</h3><p class="muted">The legacy analyzer builds and scores the bigram model on the same sequence. It is training perplexity, not held-out prediction.</p></div>
+      <div class="card bad"><div class="state">Bug</div><h3>Age was not parsed</h3><p class="muted">The public table uses <code>Age</code>; the old parser reads lowercase <code>age</code>. Saved results contain <code>age: null</code>, so old outputs are not age-adjusted.</p></div>
+      <div class="card warn"><div class="state">Quarantine</div><h3>PSI / Gerchberg–Saxton</h3><p class="muted">A real mathematical algorithm applied through an invented radial canvas. Interesting probe, but its biological meaning is not independently established. The historical claim that p=.006 survives a ≈.003 Bonferroni threshold is also arithmetically false.</p></div>
+    </div>
+  </div>
+</section>
+
+<section id="mmse">
+  <div class="wrap">
+    <div class="kicker">Severity versus diagnosis</div>
+    <h2>The pooled MMSE correlation is not the severity test we want.</h2>
+    <p>In ds004504 every control participant has MMSE 30, while AD and FTD participants have lower and variable scores. A feature that separates diagnoses will therefore tend to correlate with pooled MMSE even if it does not track severity within Alzheimer's disease.</p>
+    <div class="grid g2">
+      <div class="card warn"><div class="state">Historical</div><h3>Pool everybody</h3><p class="muted">Useful as a descriptive association, but diagnosis is baked into the MMSE distribution.</p></div>
+      <div class="card good"><div class="state">Audit</div><h3>Within AD</h3><p class="muted">Correlate the frozen dwell gradient with MMSE among AD subjects only. This asks whether the feature tracks severity rather than merely category.</p></div>
+    </div>
+  </div>
+</section>
+
+<section id="gate">
+  <div class="wrap">
+    <div class="kicker">Frozen next gate</div>
+    <h2>One candidate. One boring baseline. Independent people.</h2>
+    <div class="gate"><b>Primary feature</b><div><code>dwell_gradient</code> only.</div></div>
+    <div class="gate"><b>Model A</b><div>Age + alpha relative power + theta/alpha ratio + peak alpha frequency.</div></div>
+    <div class="gate"><b>Model B</b><div>Age + dwell gradient.</div></div>
+    <div class="gate"><b>Model C</b><div>Age + spectral features + dwell gradient.</div></div>
+    <div class="gate"><b>Key comparison</b><div>Does Model C beat Model A on held-out independent subjects?</div></div>
+    <div class="gate"><b>No rescue</b><div>No changing bands, graph modes, word step, log transform, gradient direction or endpoint after external labels are inspected.</div></div>
+    <div class="grid g3" style="margin-top:24px">
+      <div class="card bad"><div class="state">External null</div><h3>Retire biomarker claim</h3><p class="muted">The representation can remain useful without a disease detector.</p></div>
+      <div class="card warn"><div class="state">Replicates only</div><h3>No increment over slowing</h3><p class="muted">Interesting representation of known EEG disease physiology, not a new diagnostic marker.</p></div>
+      <div class="card good"><div class="state">Incremental signal</div><h3>Worth continuing</h3><p class="muted">Frozen external replication plus held-out value beyond ordinary spectral features would be a genuinely stronger result.</p></div>
+    </div>
+  </div>
+</section>
+
+<section id="run">
+  <div class="wrap">
+    <div class="kicker">Run now</div>
+    <h2>An internal audit harness is in the repo.</h2>
+    <p><code>phidwell_spectral_audit.py</code> reuses the existing Φ-Dwell subject results, fixes participant age parsing for the audit, computes the frozen spectral baselines from raw EEG, tests dwell gradient within AD against MMSE, and compares subject-wise cross-validated AD/CN models.</p>
+    <pre>python phidwell_spectral_audit.py "path/to/ds004504" ^
+  --results "Results/phidwell_alzheimer_results.json" ^
+  --out "Results/phidwell_spectral_audit.json"</pre>
+    <p class="muted">This is deliberately labeled an <b>internal discovery-cohort audit</b>. Better cross-validation does not turn reused subjects into an external replication.</p>
+  </div>
+</section>
+
+<section id="refs">
+  <div class="wrap">
+    <div class="kicker">Context</div>
+    <h2>Why spectral slowing is the mandatory baseline</h2>
+    <ul class="refs">
+      <li><a href="https://pubmed.ncbi.nlm.nih.gov/40379988/">Bruffaerts et al. (2025), diagnostic utility of electrophysiological markers in AD/FTD/DLB</a> — systematic review of 70 biomarker-proven studies; spectral slowing was a common observation across diseases.</li>
+      <li><a href="https://pubmed.ncbi.nlm.nih.gov/39449097/">EEG biomarkers in Alzheimer's and prodromal Alzheimer's</a> — reports significant theta/alpha and theta/beta power-ratio differences and increased theta power in AD.</li>
+      <li><a href="https://pubmed.ncbi.nlm.nih.gov/40013094/">Paitel et al. (2025), systematic review of EEG connectivity in AD/MCI</a> — alpha-band connectivity effects were especially recurrent, while the literature remained methodologically heterogeneous.</li>
+      <li><a href="https://openneuro.org/datasets/ds004504">OpenNeuro ds004504</a> — the 88-subject discovery dataset used by the historical Alzheimer's branch.</li>
+    </ul>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <p><b>Clinical boundary:</b> research software only. No prospective diagnostic accuracy, clinical utility, or generalization across acquisition systems has been established.</p>
+    <p>2026 audit reset · BrainMetastabilityAnalyzerTool · MIT</p>
+  </div>
+</footer>
+</body>
+</html>
